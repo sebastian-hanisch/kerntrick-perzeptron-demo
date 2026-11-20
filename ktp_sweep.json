@@ -1,0 +1,2522 @@
+{
+ "meta": {
+  "seeds_A": [
+   1,
+   30
+  ],
+  "seeds_B": [
+   1001,
+   1030
+  ],
+  "max_updates": 300000,
+  "erzeuger": "SplitMix64 (ktp_rng.py)"
+ },
+ "ringe": {
+  "Linear": {
+   "A": {
+    "converged": 0,
+    "runs": 30,
+    "updates": {
+     "min": 124930.0,
+     "median": 150644.0,
+     "max": 176499.0,
+     "n": 30
+    },
+    "epochs": {
+     "min": 3000.0,
+     "median": 3000.0,
+     "max": 3000.0,
+     "n": 30
+    },
+    "stops": {
+     "konvergiert": 0,
+     "Epochengrenze": 30,
+     "Korrekturgrenze": 0
+    }
+   },
+   "B": {
+    "converged": 0,
+    "runs": 30,
+    "updates": {
+     "min": 118795.0,
+     "median": 150714.5,
+     "max": 171379.0,
+     "n": 30
+    },
+    "epochs": {
+     "min": 3000.0,
+     "median": 3000.0,
+     "max": 3000.0,
+     "n": 30
+    },
+    "stops": {
+     "konvergiert": 0,
+     "Epochengrenze": 30,
+     "Korrekturgrenze": 0
+    }
+   }
+  },
+  "Polynom 2": {
+   "A": {
+    "converged": 30,
+    "runs": 30,
+    "updates": {
+     "min": 9.0,
+     "median": 15.0,
+     "max": 15.0,
+     "n": 30
+    },
+    "epochs": {
+     "min": 2.0,
+     "median": 2.0,
+     "max": 3.0,
+     "n": 30
+    },
+    "stops": {
+     "konvergiert": 30,
+     "Epochengrenze": 0,
+     "Korrekturgrenze": 0
+    }
+   },
+   "B": {
+    "converged": 30,
+    "runs": 30,
+    "updates": {
+     "min": 9.0,
+     "median": 14.5,
+     "max": 18.0,
+     "n": 30
+    },
+    "epochs": {
+     "min": 2.0,
+     "median": 2.0,
+     "max": 3.0,
+     "n": 30
+    },
+    "stops": {
+     "konvergiert": 30,
+     "Epochengrenze": 0,
+     "Korrekturgrenze": 0
+    }
+   }
+  },
+  "Polynom 3": {
+   "A": {
+    "converged": 30,
+    "runs": 30,
+    "updates": {
+     "min": 22.0,
+     "median": 31.0,
+     "max": 38.0,
+     "n": 30
+    },
+    "epochs": {
+     "min": 2.0,
+     "median": 3.0,
+     "max": 5.0,
+     "n": 30
+    },
+    "stops": {
+     "konvergiert": 30,
+     "Epochengrenze": 0,
+     "Korrekturgrenze": 0
+    }
+   },
+   "B": {
+    "converged": 30,
+    "runs": 30,
+    "updates": {
+     "min": 22.0,
+     "median": 31.0,
+     "max": 40.0,
+     "n": 30
+    },
+    "epochs": {
+     "min": 2.0,
+     "median": 3.0,
+     "max": 4.0,
+     "n": 30
+    },
+    "stops": {
+     "konvergiert": 30,
+     "Epochengrenze": 0,
+     "Korrekturgrenze": 0
+    }
+   }
+  },
+  "Gauß σ = 0,25": {
+   "A": {
+    "converged": 30,
+    "runs": 30,
+    "updates": {
+     "min": 14.0,
+     "median": 16.0,
+     "max": 18.0,
+     "n": 30
+    },
+    "epochs": {
+     "min": 2.0,
+     "median": 2.0,
+     "max": 3.0,
+     "n": 30
+    },
+    "stops": {
+     "konvergiert": 30,
+     "Epochengrenze": 0,
+     "Korrekturgrenze": 0
+    }
+   },
+   "B": {
+    "converged": 30,
+    "runs": 30,
+    "updates": {
+     "min": 12.0,
+     "median": 16.0,
+     "max": 18.0,
+     "n": 30
+    },
+    "epochs": {
+     "min": 2.0,
+     "median": 2.0,
+     "max": 4.0,
+     "n": 30
+    },
+    "stops": {
+     "konvergiert": 30,
+     "Epochengrenze": 0,
+     "Korrekturgrenze": 0
+    }
+   }
+  },
+  "Gauß σ = 0,5": {
+   "A": {
+    "converged": 30,
+    "runs": 30,
+    "updates": {
+     "min": 14.0,
+     "median": 16.0,
+     "max": 22.0,
+     "n": 30
+    },
+    "epochs": {
+     "min": 2.0,
+     "median": 2.0,
+     "max": 5.0,
+     "n": 30
+    },
+    "stops": {
+     "konvergiert": 30,
+     "Epochengrenze": 0,
+     "Korrekturgrenze": 0
+    }
+   },
+   "B": {
+    "converged": 30,
+    "runs": 30,
+    "updates": {
+     "min": 12.0,
+     "median": 16.0,
+     "max": 20.0,
+     "n": 30
+    },
+    "epochs": {
+     "min": 2.0,
+     "median": 2.0,
+     "max": 5.0,
+     "n": 30
+    },
+    "stops": {
+     "konvergiert": 30,
+     "Epochengrenze": 0,
+     "Korrekturgrenze": 0
+    }
+   }
+  },
+  "Gauß σ = 1": {
+   "A": {
+    "converged": 30,
+    "runs": 30,
+    "updates": {
+     "min": 13.0,
+     "median": 15.0,
+     "max": 17.0,
+     "n": 30
+    },
+    "epochs": {
+     "min": 2.0,
+     "median": 2.0,
+     "max": 3.0,
+     "n": 30
+    },
+    "stops": {
+     "konvergiert": 30,
+     "Epochengrenze": 0,
+     "Korrekturgrenze": 0
+    }
+   },
+   "B": {
+    "converged": 30,
+    "runs": 30,
+    "updates": {
+     "min": 13.0,
+     "median": 15.0,
+     "max": 17.0,
+     "n": 30
+    },
+    "epochs": {
+     "min": 2.0,
+     "median": 2.0,
+     "max": 3.0,
+     "n": 30
+    },
+    "stops": {
+     "konvergiert": 30,
+     "Epochengrenze": 0,
+     "Korrekturgrenze": 0
+    }
+   }
+  },
+  "Gauß σ = 2": {
+   "A": {
+    "converged": 30,
+    "runs": 30,
+    "updates": {
+     "min": 17.0,
+     "median": 24.0,
+     "max": 38.0,
+     "n": 30
+    },
+    "epochs": {
+     "min": 2.0,
+     "median": 3.0,
+     "max": 5.0,
+     "n": 30
+    },
+    "stops": {
+     "konvergiert": 30,
+     "Epochengrenze": 0,
+     "Korrekturgrenze": 0
+    }
+   },
+   "B": {
+    "converged": 30,
+    "runs": 30,
+    "updates": {
+     "min": 17.0,
+     "median": 24.0,
+     "max": 40.0,
+     "n": 30
+    },
+    "epochs": {
+     "min": 2.0,
+     "median": 2.5,
+     "max": 4.0,
+     "n": 30
+    },
+    "stops": {
+     "konvergiert": 30,
+     "Epochengrenze": 0,
+     "Korrekturgrenze": 0
+    }
+   }
+  }
+ },
+ "bandbreite": {
+  "0,02": {
+   "A": {
+    "converged": 30,
+    "runs": 30,
+    "updates": {
+     "min": 64.0,
+     "median": 72.0,
+     "max": 80.0,
+     "n": 30
+    },
+    "epochs": {
+     "min": 3.0,
+     "median": 4.0,
+     "max": 9.0,
+     "n": 30
+    },
+    "stops": {
+     "konvergiert": 30,
+     "Epochengrenze": 0,
+     "Korrekturgrenze": 0
+    },
+    "certified": 30,
+    "bound": {
+     "min": 186.07822198015745,
+     "median": 190.7560894268786,
+     "max": 196.38325199385076,
+     "n": 30
+    },
+    "bound_violations": 0
+   },
+   "B": {
+    "converged": 30,
+    "runs": 30,
+    "updates": {
+     "min": 60.0,
+     "median": 71.0,
+     "max": 80.0,
+     "n": 30
+    },
+    "epochs": {
+     "min": 3.0,
+     "median": 5.0,
+     "max": 7.0,
+     "n": 30
+    },
+    "stops": {
+     "konvergiert": 30,
+     "Epochengrenze": 0,
+     "Korrekturgrenze": 0
+    },
+    "certified": 30,
+    "bound": {
+     "min": 187.53602045387856,
+     "median": 191.52377705812313,
+     "max": 196.5054775414891,
+     "n": 30
+    },
+    "bound_violations": 0
+   }
+  },
+  "0,05": {
+   "A": {
+    "converged": 30,
+    "runs": 30,
+    "updates": {
+     "min": 34.0,
+     "median": 38.0,
+     "max": 44.0,
+     "n": 30
+    },
+    "epochs": {
+     "min": 2.0,
+     "median": 3.0,
+     "max": 5.0,
+     "n": 30
+    },
+    "stops": {
+     "konvergiert": 30,
+     "Epochengrenze": 0,
+     "Korrekturgrenze": 0
+    },
+    "certified": 30,
+    "bound": {
+     "min": 152.28321573765245,
+     "median": 161.28670621086303,
+     "max": 170.14520304705576,
+     "n": 30
+    },
+    "bound_violations": 0
+   },
+   "B": {
+    "converged": 30,
+    "runs": 30,
+    "updates": {
+     "min": 30.0,
+     "median": 36.0,
+     "max": 46.0,
+     "n": 30
+    },
+    "epochs": {
+     "min": 2.0,
+     "median": 3.0,
+     "max": 4.0,
+     "n": 30
+    },
+    "stops": {
+     "konvergiert": 30,
+     "Epochengrenze": 0,
+     "Korrekturgrenze": 0
+    },
+    "certified": 30,
+    "bound": {
+     "min": 152.35765674631958,
+     "median": 160.80107881317366,
+     "max": 169.18596443297582,
+     "n": 30
+    },
+    "bound_violations": 0
+   }
+  },
+  "0,1": {
+   "A": {
+    "converged": 30,
+    "runs": 30,
+    "updates": {
+     "min": 18.0,
+     "median": 20.0,
+     "max": 24.0,
+     "n": 30
+    },
+    "epochs": {
+     "min": 2.0,
+     "median": 2.0,
+     "max": 3.0,
+     "n": 30
+    },
+    "stops": {
+     "konvergiert": 30,
+     "Epochengrenze": 0,
+     "Korrekturgrenze": 0
+    },
+    "certified": 30,
+    "bound": {
+     "min": 106.75996754018566,
+     "median": 113.55074505760155,
+     "max": 121.40392029923717,
+     "n": 30
+    },
+    "bound_violations": 0
+   },
+   "B": {
+    "converged": 30,
+    "runs": 30,
+    "updates": {
+     "min": 18.0,
+     "median": 20.0,
+     "max": 24.0,
+     "n": 30
+    },
+    "epochs": {
+     "min": 2.0,
+     "median": 2.0,
+     "max": 3.0,
+     "n": 30
+    },
+    "stops": {
+     "konvergiert": 30,
+     "Epochengrenze": 0,
+     "Korrekturgrenze": 0
+    },
+    "certified": 30,
+    "bound": {
+     "min": 107.02323192998064,
+     "median": 112.97825234509887,
+     "max": 118.85231020747096,
+     "n": 30
+    },
+    "bound_violations": 0
+   }
+  },
+  "0,25": {
+   "A": {
+    "converged": 30,
+    "runs": 30,
+    "updates": {
+     "min": 14.0,
+     "median": 16.0,
+     "max": 18.0,
+     "n": 30
+    },
+    "epochs": {
+     "min": 2.0,
+     "median": 2.0,
+     "max": 3.0,
+     "n": 30
+    },
+    "stops": {
+     "konvergiert": 30,
+     "Epochengrenze": 0,
+     "Korrekturgrenze": 0
+    },
+    "certified": 30,
+    "bound": {
+     "min": 50.29015169307476,
+     "median": 53.647277982669024,
+     "max": 55.72278918293904,
+     "n": 30
+    },
+    "bound_violations": 0
+   },
+   "B": {
+    "converged": 30,
+    "runs": 30,
+    "updates": {
+     "min": 12.0,
+     "median": 16.0,
+     "max": 18.0,
+     "n": 30
+    },
+    "epochs": {
+     "min": 2.0,
+     "median": 2.0,
+     "max": 4.0,
+     "n": 30
+    },
+    "stops": {
+     "konvergiert": 30,
+     "Epochengrenze": 0,
+     "Korrekturgrenze": 0
+    },
+    "certified": 30,
+    "bound": {
+     "min": 50.16119799616878,
+     "median": 53.73374538888575,
+     "max": 54.87565440799839,
+     "n": 30
+    },
+    "bound_violations": 0
+   }
+  },
+  "0,5": {
+   "A": {
+    "converged": 30,
+    "runs": 30,
+    "updates": {
+     "min": 14.0,
+     "median": 16.0,
+     "max": 22.0,
+     "n": 30
+    },
+    "epochs": {
+     "min": 2.0,
+     "median": 2.0,
+     "max": 5.0,
+     "n": 30
+    },
+    "stops": {
+     "konvergiert": 30,
+     "Epochengrenze": 0,
+     "Korrekturgrenze": 0
+    },
+    "certified": 30,
+    "bound": {
+     "min": 32.73113657036228,
+     "median": 33.48050439519642,
+     "max": 34.938311346346595,
+     "n": 30
+    },
+    "bound_violations": 0
+   },
+   "B": {
+    "converged": 30,
+    "runs": 30,
+    "updates": {
+     "min": 12.0,
+     "median": 16.0,
+     "max": 20.0,
+     "n": 30
+    },
+    "epochs": {
+     "min": 2.0,
+     "median": 2.0,
+     "max": 5.0,
+     "n": 30
+    },
+    "stops": {
+     "konvergiert": 30,
+     "Epochengrenze": 0,
+     "Korrekturgrenze": 0
+    },
+    "certified": 30,
+    "bound": {
+     "min": 31.204694459885168,
+     "median": 33.59939145377338,
+     "max": 34.49002465589282,
+     "n": 30
+    },
+    "bound_violations": 0
+   }
+  },
+  "1": {
+   "A": {
+    "converged": 30,
+    "runs": 30,
+    "updates": {
+     "min": 13.0,
+     "median": 15.0,
+     "max": 17.0,
+     "n": 30
+    },
+    "epochs": {
+     "min": 2.0,
+     "median": 2.0,
+     "max": 3.0,
+     "n": 30
+    },
+    "stops": {
+     "konvergiert": 30,
+     "Epochengrenze": 0,
+     "Korrekturgrenze": 0
+    },
+    "certified": 30,
+    "bound": {
+     "min": 35.593895470796404,
+     "median": 37.114955734193934,
+     "max": 39.106579538269116,
+     "n": 30
+    },
+    "bound_violations": 0
+   },
+   "B": {
+    "converged": 30,
+    "runs": 30,
+    "updates": {
+     "min": 13.0,
+     "median": 15.0,
+     "max": 17.0,
+     "n": 30
+    },
+    "epochs": {
+     "min": 2.0,
+     "median": 2.0,
+     "max": 3.0,
+     "n": 30
+    },
+    "stops": {
+     "konvergiert": 30,
+     "Epochengrenze": 0,
+     "Korrekturgrenze": 0
+    },
+    "certified": 30,
+    "bound": {
+     "min": 34.01755634749008,
+     "median": 37.239815771855135,
+     "max": 39.04645421159974,
+     "n": 30
+    },
+    "bound_violations": 0
+   }
+  },
+  "2": {
+   "A": {
+    "converged": 30,
+    "runs": 30,
+    "updates": {
+     "min": 17.0,
+     "median": 24.0,
+     "max": 38.0,
+     "n": 30
+    },
+    "epochs": {
+     "min": 2.0,
+     "median": 3.0,
+     "max": 5.0,
+     "n": 30
+    },
+    "stops": {
+     "konvergiert": 30,
+     "Epochengrenze": 0,
+     "Korrekturgrenze": 0
+    },
+    "certified": 30,
+    "bound": {
+     "min": 105.18371150390549,
+     "median": 110.1952004004998,
+     "max": 114.71287726257651,
+     "n": 30
+    },
+    "bound_violations": 0
+   },
+   "B": {
+    "converged": 30,
+    "runs": 30,
+    "updates": {
+     "min": 17.0,
+     "median": 24.0,
+     "max": 40.0,
+     "n": 30
+    },
+    "epochs": {
+     "min": 2.0,
+     "median": 2.5,
+     "max": 4.0,
+     "n": 30
+    },
+    "stops": {
+     "konvergiert": 30,
+     "Epochengrenze": 0,
+     "Korrekturgrenze": 0
+    },
+    "certified": 30,
+    "bound": {
+     "min": 100.06268978346706,
+     "median": 110.32379329148624,
+     "max": 113.82583513195564,
+     "n": 30
+    },
+    "bound_violations": 0
+   }
+  },
+  "4": {
+   "A": {
+    "converged": 30,
+    "runs": 30,
+    "updates": {
+     "min": 49.0,
+     "median": 142.0,
+     "max": 206.0,
+     "n": 30
+    },
+    "epochs": {
+     "min": 2.0,
+     "median": 5.0,
+     "max": 9.0,
+     "n": 30
+    },
+    "stops": {
+     "konvergiert": 30,
+     "Epochengrenze": 0,
+     "Korrekturgrenze": 0
+    },
+    "certified": 30,
+    "bound": {
+     "min": 999.084791231189,
+     "median": 1055.3127013475855,
+     "max": 1096.3190863905525,
+     "n": 30
+    },
+    "bound_violations": 0
+   },
+   "B": {
+    "converged": 30,
+    "runs": 30,
+    "updates": {
+     "min": 96.0,
+     "median": 100.0,
+     "max": 198.0,
+     "n": 30
+    },
+    "epochs": {
+     "min": 3.0,
+     "median": 4.0,
+     "max": 9.0,
+     "n": 30
+    },
+    "stops": {
+     "konvergiert": 30,
+     "Epochengrenze": 0,
+     "Korrekturgrenze": 0
+    },
+    "certified": 30,
+    "bound": {
+     "min": 985.6719962427129,
+     "median": 1050.3083138514846,
+     "max": 1081.6054656292638,
+     "n": 30
+    },
+    "bound_violations": 0
+   }
+  },
+  "8": {
+   "A": {
+    "converged": 30,
+    "runs": 30,
+    "updates": {
+     "min": 350.0,
+     "median": 977.5,
+     "max": 2281.0,
+     "n": 30
+    },
+    "epochs": {
+     "min": 9.0,
+     "median": 23.0,
+     "max": 68.0,
+     "n": 30
+    },
+    "stops": {
+     "konvergiert": 30,
+     "Epochengrenze": 0,
+     "Korrekturgrenze": 0
+    },
+    "certified": 30,
+    "bound": {
+     "min": 14234.669557027422,
+     "median": 14979.806828417495,
+     "max": 15580.921407245794,
+     "n": 30
+    },
+    "bound_violations": 0
+   },
+   "B": {
+    "converged": 30,
+    "runs": 30,
+    "updates": {
+     "min": 179.0,
+     "median": 1248.0,
+     "max": 2249.0,
+     "n": 30
+    },
+    "epochs": {
+     "min": 6.0,
+     "median": 29.0,
+     "max": 70.0,
+     "n": 30
+    },
+    "stops": {
+     "konvergiert": 30,
+     "Epochengrenze": 0,
+     "Korrekturgrenze": 0
+    },
+    "certified": 30,
+    "bound": {
+     "min": 14330.118699513394,
+     "median": 14968.024252329014,
+     "max": 15332.023613975642,
+     "n": 30
+    },
+    "bound_violations": 0
+   }
+  }
+ },
+ "liefergebiet": {
+  "n100 Polynom 2": {
+   "A": {
+    "converged": 30,
+    "runs": 30,
+    "updates": {
+     "min": 89.0,
+     "median": 315.0,
+     "max": 1767.0,
+     "n": 30
+    },
+    "epochs": {
+     "min": 9.0,
+     "median": 38.0,
+     "max": 367.0,
+     "n": 30
+    },
+    "stops": {
+     "konvergiert": 30,
+     "Epochengrenze": 0,
+     "Korrekturgrenze": 0
+    }
+   },
+   "B": {
+    "converged": 30,
+    "runs": 30,
+    "updates": {
+     "min": 101.0,
+     "median": 193.0,
+     "max": 1333.0,
+     "n": 30
+    },
+    "epochs": {
+     "min": 9.0,
+     "median": 28.0,
+     "max": 448.0,
+     "n": 30
+    },
+    "stops": {
+     "konvergiert": 30,
+     "Epochengrenze": 0,
+     "Korrekturgrenze": 0
+    }
+   }
+  },
+  "n100 Polynom 3": {
+   "A": {
+    "converged": 30,
+    "runs": 30,
+    "updates": {
+     "min": 62.0,
+     "median": 200.0,
+     "max": 2349.0,
+     "n": 30
+    },
+    "epochs": {
+     "min": 6.0,
+     "median": 31.5,
+     "max": 699.0,
+     "n": 30
+    },
+    "stops": {
+     "konvergiert": 30,
+     "Epochengrenze": 0,
+     "Korrekturgrenze": 0
+    }
+   },
+   "B": {
+    "converged": 30,
+    "runs": 30,
+    "updates": {
+     "min": 37.0,
+     "median": 165.0,
+     "max": 2806.0,
+     "n": 30
+    },
+    "epochs": {
+     "min": 4.0,
+     "median": 18.5,
+     "max": 501.0,
+     "n": 30
+    },
+    "stops": {
+     "konvergiert": 30,
+     "Epochengrenze": 0,
+     "Korrekturgrenze": 0
+    }
+   }
+  },
+  "n200 Polynom 2": {
+   "A": {
+    "converged": 20,
+    "runs": 20,
+    "updates": {
+     "min": 248.0,
+     "median": 1107.5,
+     "max": 4346.0,
+     "n": 20
+    },
+    "epochs": {
+     "min": 11.0,
+     "median": 112.0,
+     "max": 1097.0,
+     "n": 20
+    },
+    "stops": {
+     "konvergiert": 20,
+     "Epochengrenze": 0,
+     "Korrekturgrenze": 0
+    },
+    "certified": 20,
+    "bound_over_updates": {
+     "min": 66.07915466137548,
+     "median": 129.8409927804905,
+     "max": 1235.6386390673124,
+     "n": 20
+    },
+    "bound_violations": 0
+   },
+   "B": {
+    "converged": 20,
+    "runs": 20,
+    "updates": {
+     "min": 196.0,
+     "median": 797.0,
+     "max": 5367.0,
+     "n": 20
+    },
+    "epochs": {
+     "min": 13.0,
+     "median": 75.0,
+     "max": 1013.0,
+     "n": 20
+    },
+    "stops": {
+     "konvergiert": 20,
+     "Epochengrenze": 0,
+     "Korrekturgrenze": 0
+    },
+    "certified": 20,
+    "bound_over_updates": {
+     "min": 24.461528054053517,
+     "median": 93.54132467830397,
+     "max": 446.138328111682,
+     "n": 20
+    },
+    "bound_violations": 0
+   }
+  }
+ },
+ "monde": {
+  "Rauschen 0 Linear": {
+   "A": {
+    "converged": 0,
+    "runs": 20,
+    "updates": {
+     "min": 16055.0,
+     "median": 31421.0,
+     "max": 47554.0,
+     "n": 20
+    },
+    "epochs": {
+     "min": 2000.0,
+     "median": 2000.0,
+     "max": 2000.0,
+     "n": 20
+    },
+    "stops": {
+     "konvergiert": 0,
+     "Epochengrenze": 20,
+     "Korrekturgrenze": 0
+    }
+   },
+   "B": {
+    "converged": 0,
+    "runs": 20,
+    "updates": {
+     "min": 20216.0,
+     "median": 31125.5,
+     "max": 45830.0,
+     "n": 20
+    },
+    "epochs": {
+     "min": 2000.0,
+     "median": 2000.0,
+     "max": 2000.0,
+     "n": 20
+    },
+    "stops": {
+     "konvergiert": 0,
+     "Epochengrenze": 20,
+     "Korrekturgrenze": 0
+    }
+   }
+  },
+  "Rauschen 0 Polynom 2": {
+   "A": {
+    "converged": 0,
+    "runs": 20,
+    "updates": {
+     "min": 17767.0,
+     "median": 30934.5,
+     "max": 50271.0,
+     "n": 20
+    },
+    "epochs": {
+     "min": 2000.0,
+     "median": 2000.0,
+     "max": 2000.0,
+     "n": 20
+    },
+    "stops": {
+     "konvergiert": 0,
+     "Epochengrenze": 20,
+     "Korrekturgrenze": 0
+    }
+   },
+   "B": {
+    "converged": 0,
+    "runs": 20,
+    "updates": {
+     "min": 21073.0,
+     "median": 32877.0,
+     "max": 47088.0,
+     "n": 20
+    },
+    "epochs": {
+     "min": 2000.0,
+     "median": 2000.0,
+     "max": 2000.0,
+     "n": 20
+    },
+    "stops": {
+     "konvergiert": 0,
+     "Epochengrenze": 20,
+     "Korrekturgrenze": 0
+    }
+   }
+  },
+  "Rauschen 0 Polynom 3": {
+   "A": {
+    "converged": 20,
+    "runs": 20,
+    "updates": {
+     "min": 26.0,
+     "median": 39.5,
+     "max": 47.0,
+     "n": 20
+    },
+    "epochs": {
+     "min": 3.0,
+     "median": 5.0,
+     "max": 7.0,
+     "n": 20
+    },
+    "stops": {
+     "konvergiert": 20,
+     "Epochengrenze": 0,
+     "Korrekturgrenze": 0
+    }
+   },
+   "B": {
+    "converged": 20,
+    "runs": 20,
+    "updates": {
+     "min": 18.0,
+     "median": 36.5,
+     "max": 52.0,
+     "n": 20
+    },
+    "epochs": {
+     "min": 2.0,
+     "median": 5.0,
+     "max": 9.0,
+     "n": 20
+    },
+    "stops": {
+     "konvergiert": 20,
+     "Epochengrenze": 0,
+     "Korrekturgrenze": 0
+    }
+   }
+  },
+  "Rauschen 0 Gauß σ = 0,25": {
+   "A": {
+    "converged": 20,
+    "runs": 20,
+    "updates": {
+     "min": 6.0,
+     "median": 8.0,
+     "max": 12.0,
+     "n": 20
+    },
+    "epochs": {
+     "min": 2.0,
+     "median": 2.0,
+     "max": 3.0,
+     "n": 20
+    },
+    "stops": {
+     "konvergiert": 20,
+     "Epochengrenze": 0,
+     "Korrekturgrenze": 0
+    }
+   },
+   "B": {
+    "converged": 20,
+    "runs": 20,
+    "updates": {
+     "min": 4.0,
+     "median": 8.0,
+     "max": 12.0,
+     "n": 20
+    },
+    "epochs": {
+     "min": 2.0,
+     "median": 2.0,
+     "max": 3.0,
+     "n": 20
+    },
+    "stops": {
+     "konvergiert": 20,
+     "Epochengrenze": 0,
+     "Korrekturgrenze": 0
+    }
+   }
+  },
+  "Rauschen 0 Gauß σ = 0,5": {
+   "A": {
+    "converged": 20,
+    "runs": 20,
+    "updates": {
+     "min": 6.0,
+     "median": 8.0,
+     "max": 12.0,
+     "n": 20
+    },
+    "epochs": {
+     "min": 2.0,
+     "median": 2.0,
+     "max": 4.0,
+     "n": 20
+    },
+    "stops": {
+     "konvergiert": 20,
+     "Epochengrenze": 0,
+     "Korrekturgrenze": 0
+    }
+   },
+   "B": {
+    "converged": 20,
+    "runs": 20,
+    "updates": {
+     "min": 6.0,
+     "median": 10.0,
+     "max": 14.0,
+     "n": 20
+    },
+    "epochs": {
+     "min": 2.0,
+     "median": 2.0,
+     "max": 3.0,
+     "n": 20
+    },
+    "stops": {
+     "konvergiert": 20,
+     "Epochengrenze": 0,
+     "Korrekturgrenze": 0
+    }
+   }
+  },
+  "Rauschen 0 Gauß σ = 1": {
+   "A": {
+    "converged": 20,
+    "runs": 20,
+    "updates": {
+     "min": 22.0,
+     "median": 37.0,
+     "max": 58.0,
+     "n": 20
+    },
+    "epochs": {
+     "min": 2.0,
+     "median": 5.0,
+     "max": 8.0,
+     "n": 20
+    },
+    "stops": {
+     "konvergiert": 20,
+     "Epochengrenze": 0,
+     "Korrekturgrenze": 0
+    }
+   },
+   "B": {
+    "converged": 20,
+    "runs": 20,
+    "updates": {
+     "min": 24.0,
+     "median": 39.0,
+     "max": 54.0,
+     "n": 20
+    },
+    "epochs": {
+     "min": 3.0,
+     "median": 5.0,
+     "max": 9.0,
+     "n": 20
+    },
+    "stops": {
+     "konvergiert": 20,
+     "Epochengrenze": 0,
+     "Korrekturgrenze": 0
+    }
+   }
+  },
+  "Rauschen 0,1 Linear": {
+   "A": {
+    "converged": 0,
+    "runs": 20,
+    "updates": {
+     "min": 18659.0,
+     "median": 31525.5,
+     "max": 48886.0,
+     "n": 20
+    },
+    "epochs": {
+     "min": 2000.0,
+     "median": 2000.0,
+     "max": 2000.0,
+     "n": 20
+    },
+    "stops": {
+     "konvergiert": 0,
+     "Epochengrenze": 20,
+     "Korrekturgrenze": 0
+    }
+   },
+   "B": {
+    "converged": 0,
+    "runs": 20,
+    "updates": {
+     "min": 19639.0,
+     "median": 31928.0,
+     "max": 42398.0,
+     "n": 20
+    },
+    "epochs": {
+     "min": 2000.0,
+     "median": 2000.0,
+     "max": 2000.0,
+     "n": 20
+    },
+    "stops": {
+     "konvergiert": 0,
+     "Epochengrenze": 20,
+     "Korrekturgrenze": 0
+    }
+   }
+  },
+  "Rauschen 0,1 Polynom 2": {
+   "A": {
+    "converged": 0,
+    "runs": 20,
+    "updates": {
+     "min": 18366.0,
+     "median": 31680.5,
+     "max": 50407.0,
+     "n": 20
+    },
+    "epochs": {
+     "min": 2000.0,
+     "median": 2000.0,
+     "max": 2000.0,
+     "n": 20
+    },
+    "stops": {
+     "konvergiert": 0,
+     "Epochengrenze": 20,
+     "Korrekturgrenze": 0
+    }
+   },
+   "B": {
+    "converged": 0,
+    "runs": 20,
+    "updates": {
+     "min": 21832.0,
+     "median": 33151.5,
+     "max": 43322.0,
+     "n": 20
+    },
+    "epochs": {
+     "min": 2000.0,
+     "median": 2000.0,
+     "max": 2000.0,
+     "n": 20
+    },
+    "stops": {
+     "konvergiert": 0,
+     "Epochengrenze": 20,
+     "Korrekturgrenze": 0
+    }
+   }
+  },
+  "Rauschen 0,1 Polynom 3": {
+   "A": {
+    "converged": 20,
+    "runs": 20,
+    "updates": {
+     "min": 26.0,
+     "median": 44.0,
+     "max": 59.0,
+     "n": 20
+    },
+    "epochs": {
+     "min": 3.0,
+     "median": 6.0,
+     "max": 10.0,
+     "n": 20
+    },
+    "stops": {
+     "konvergiert": 20,
+     "Epochengrenze": 0,
+     "Korrekturgrenze": 0
+    }
+   },
+   "B": {
+    "converged": 20,
+    "runs": 20,
+    "updates": {
+     "min": 28.0,
+     "median": 42.0,
+     "max": 59.0,
+     "n": 20
+    },
+    "epochs": {
+     "min": 3.0,
+     "median": 6.5,
+     "max": 11.0,
+     "n": 20
+    },
+    "stops": {
+     "konvergiert": 20,
+     "Epochengrenze": 0,
+     "Korrekturgrenze": 0
+    }
+   }
+  },
+  "Rauschen 0,1 Gauß σ = 0,25": {
+   "A": {
+    "converged": 20,
+    "runs": 20,
+    "updates": {
+     "min": 6.0,
+     "median": 9.0,
+     "max": 12.0,
+     "n": 20
+    },
+    "epochs": {
+     "min": 2.0,
+     "median": 2.0,
+     "max": 3.0,
+     "n": 20
+    },
+    "stops": {
+     "konvergiert": 20,
+     "Epochengrenze": 0,
+     "Korrekturgrenze": 0
+    }
+   },
+   "B": {
+    "converged": 20,
+    "runs": 20,
+    "updates": {
+     "min": 4.0,
+     "median": 8.0,
+     "max": 12.0,
+     "n": 20
+    },
+    "epochs": {
+     "min": 2.0,
+     "median": 2.0,
+     "max": 3.0,
+     "n": 20
+    },
+    "stops": {
+     "konvergiert": 20,
+     "Epochengrenze": 0,
+     "Korrekturgrenze": 0
+    }
+   }
+  },
+  "Rauschen 0,1 Gauß σ = 0,5": {
+   "A": {
+    "converged": 20,
+    "runs": 20,
+    "updates": {
+     "min": 6.0,
+     "median": 10.0,
+     "max": 14.0,
+     "n": 20
+    },
+    "epochs": {
+     "min": 2.0,
+     "median": 2.0,
+     "max": 3.0,
+     "n": 20
+    },
+    "stops": {
+     "konvergiert": 20,
+     "Epochengrenze": 0,
+     "Korrekturgrenze": 0
+    }
+   },
+   "B": {
+    "converged": 20,
+    "runs": 20,
+    "updates": {
+     "min": 6.0,
+     "median": 10.0,
+     "max": 14.0,
+     "n": 20
+    },
+    "epochs": {
+     "min": 2.0,
+     "median": 2.0,
+     "max": 3.0,
+     "n": 20
+    },
+    "stops": {
+     "konvergiert": 20,
+     "Epochengrenze": 0,
+     "Korrekturgrenze": 0
+    }
+   }
+  },
+  "Rauschen 0,1 Gauß σ = 1": {
+   "A": {
+    "converged": 20,
+    "runs": 20,
+    "updates": {
+     "min": 22.0,
+     "median": 49.0,
+     "max": 88.0,
+     "n": 20
+    },
+    "epochs": {
+     "min": 2.0,
+     "median": 6.5,
+     "max": 15.0,
+     "n": 20
+    },
+    "stops": {
+     "konvergiert": 20,
+     "Epochengrenze": 0,
+     "Korrekturgrenze": 0
+    }
+   },
+   "B": {
+    "converged": 20,
+    "runs": 20,
+    "updates": {
+     "min": 32.0,
+     "median": 40.0,
+     "max": 62.0,
+     "n": 20
+    },
+    "epochs": {
+     "min": 4.0,
+     "median": 5.0,
+     "max": 12.0,
+     "n": 20
+    },
+    "stops": {
+     "konvergiert": 20,
+     "Epochengrenze": 0,
+     "Korrekturgrenze": 0
+    }
+   }
+  }
+ },
+ "zufall": {
+  "0,05": {
+   "A": {
+    "converged": 30,
+    "runs": 30,
+    "updates": {
+     "min": 92.0,
+     "median": 121.0,
+     "max": 1348.0,
+     "n": 30
+    },
+    "epochs": {
+     "min": 5.0,
+     "median": 9.0,
+     "max": 598.0,
+     "n": 30
+    },
+    "stops": {
+     "konvergiert": 30,
+     "Epochengrenze": 0,
+     "Korrekturgrenze": 0
+    },
+    "within_3000": 30,
+    "true_updates_median": 38.0,
+    "true_converged": 30,
+    "gram_positive_definite": 30,
+    "gram_min_eigenvalue": 0.00022199266321720515,
+    "interpolation_solved": 30,
+    "ratio_median_updates": 3.1842105263157894
+   },
+   "B": {
+    "converged": 30,
+    "runs": 30,
+    "updates": {
+     "min": 80.0,
+     "median": 118.0,
+     "max": 11630.0,
+     "n": 30
+    },
+    "epochs": {
+     "min": 4.0,
+     "median": 8.5,
+     "max": 5754.0,
+     "n": 30
+    },
+    "stops": {
+     "konvergiert": 30,
+     "Epochengrenze": 0,
+     "Korrekturgrenze": 0
+    },
+    "within_3000": 29,
+    "true_updates_median": 36.0,
+    "true_converged": 30,
+    "gram_positive_definite": 30,
+    "gram_min_eigenvalue": 0.00014011957340869622,
+    "interpolation_solved": 30,
+    "ratio_median_updates": 3.2777777777777777
+   }
+  },
+  "0,1": {
+   "A": {
+    "converged": 30,
+    "runs": 30,
+    "updates": {
+     "min": 176.0,
+     "median": 379.0,
+     "max": 19387.0,
+     "n": 30
+    },
+    "epochs": {
+     "min": 13.0,
+     "median": 64.0,
+     "max": 8589.0,
+     "n": 30
+    },
+    "stops": {
+     "konvergiert": 30,
+     "Epochengrenze": 0,
+     "Korrekturgrenze": 0
+    },
+    "within_3000": 29,
+    "true_updates_median": 20.0,
+    "true_converged": 30,
+    "gram_positive_definite": 30,
+    "gram_min_eigenvalue": 2.6948355277866585e-05,
+    "interpolation_solved": 30,
+    "ratio_median_updates": 18.95
+   },
+   "B": {
+    "converged": 30,
+    "runs": 30,
+    "updates": {
+     "min": 102.0,
+     "median": 359.0,
+     "max": 22135.0,
+     "n": 30
+    },
+    "epochs": {
+     "min": 6.0,
+     "median": 52.0,
+     "max": 10887.0,
+     "n": 30
+    },
+    "stops": {
+     "konvergiert": 30,
+     "Epochengrenze": 0,
+     "Korrekturgrenze": 0
+    },
+    "within_3000": 29,
+    "true_updates_median": 20.0,
+    "true_converged": 30,
+    "gram_positive_definite": 30,
+    "gram_min_eigenvalue": 1.3630082705807086e-05,
+    "interpolation_solved": 30,
+    "ratio_median_updates": 17.95
+   }
+  },
+  "0,25": {
+   "A": {
+    "converged": 29,
+    "runs": 30,
+    "updates": {
+     "min": 2703.0,
+     "median": 6624.0,
+     "max": 166997.0,
+     "n": 30
+    },
+    "epochs": {
+     "min": 330.0,
+     "median": 1271.5,
+     "max": 50000.0,
+     "n": 30
+    },
+    "stops": {
+     "konvergiert": 29,
+     "Epochengrenze": 1,
+     "Korrekturgrenze": 0
+    },
+    "within_3000": 18,
+    "true_updates_median": 16.0,
+    "true_converged": 30,
+    "gram_positive_definite": 30,
+    "gram_min_eigenvalue": 2.3623339371040716e-07,
+    "interpolation_solved": 30,
+    "ratio_median_updates": 414.0
+   },
+   "B": {
+    "converged": 29,
+    "runs": 30,
+    "updates": {
+     "min": 952.0,
+     "median": 8505.0,
+     "max": 104784.0,
+     "n": 30
+    },
+    "epochs": {
+     "min": 94.0,
+     "median": 2002.5,
+     "max": 50000.0,
+     "n": 30
+    },
+    "stops": {
+     "konvergiert": 29,
+     "Epochengrenze": 1,
+     "Korrekturgrenze": 0
+    },
+    "within_3000": 21,
+    "true_updates_median": 16.0,
+    "true_converged": 30,
+    "gram_positive_definite": 30,
+    "gram_min_eigenvalue": 6.477206950070307e-08,
+    "interpolation_solved": 30,
+    "ratio_median_updates": 531.5625
+   }
+  },
+  "0,5": {
+   "A": {
+    "converged": 3,
+    "runs": 30,
+    "updates": {
+     "min": 148662.0,
+     "median": 300000.0,
+     "max": 300000.0,
+     "n": 30
+    },
+    "epochs": {
+     "min": 14522.0,
+     "median": 28439.0,
+     "max": 50000.0,
+     "n": 30
+    },
+    "stops": {
+     "konvergiert": 3,
+     "Epochengrenze": 5,
+     "Korrekturgrenze": 22
+    },
+    "within_3000": 0,
+    "true_updates_median": 16.0,
+    "true_converged": 30,
+    "gram_positive_definite": 30,
+    "gram_min_eigenvalue": 3.3448635748139316e-11,
+    "interpolation_solved": 30,
+    "ratio_median_updates": 18750.0
+   },
+   "B": {
+    "converged": 9,
+    "runs": 30,
+    "updates": {
+     "min": 22674.0,
+     "median": 300000.0,
+     "max": 300000.0,
+     "n": 30
+    },
+    "epochs": {
+     "min": 3373.0,
+     "median": 25854.0,
+     "max": 50000.0,
+     "n": 30
+    },
+    "stops": {
+     "konvergiert": 9,
+     "Epochengrenze": 2,
+     "Korrekturgrenze": 19
+    },
+    "within_3000": 0,
+    "true_updates_median": 16.0,
+    "true_converged": 30,
+    "gram_positive_definite": 30,
+    "gram_min_eigenvalue": 5.036462274297881e-11,
+    "interpolation_solved": 30,
+    "ratio_median_updates": 18750.0
+   }
+  }
+ },
+ "d2": {
+  "Gauß σ = 0,05": {
+   "A": {
+    "converged": 20,
+    "runs": 20,
+    "updates": {
+     "min": 116.0,
+     "median": 163.0,
+     "max": 650.0,
+     "n": 20
+    },
+    "epochs": {
+     "min": 5.0,
+     "median": 10.5,
+     "max": 156.0,
+     "n": 20
+    },
+    "stops": {
+     "konvergiert": 20,
+     "Epochengrenze": 0,
+     "Korrekturgrenze": 0
+    },
+    "train_error_mean": 0.0,
+    "test_error_mean": 0.15931250000000002,
+    "test_error_min": 0.127,
+    "test_error_max": 0.18925
+   },
+   "B": {
+    "converged": 20,
+    "runs": 20,
+    "updates": {
+     "min": 118.0,
+     "median": 165.0,
+     "max": 490.0,
+     "n": 20
+    },
+    "epochs": {
+     "min": 5.0,
+     "median": 10.5,
+     "max": 112.0,
+     "n": 20
+    },
+    "stops": {
+     "konvergiert": 20,
+     "Epochengrenze": 0,
+     "Korrekturgrenze": 0
+    },
+    "train_error_mean": 0.0,
+    "test_error_mean": 0.1569375,
+    "test_error_min": 0.13,
+    "test_error_max": 0.187
+   },
+   "alle": {
+    "test_error_mean": 0.15812500000000002,
+    "test_error_se": 0.0027656170777084848,
+    "runs": 40,
+    "converged": 40
+   }
+  },
+  "Gauß σ = 0,1": {
+   "A": {
+    "converged": 20,
+    "runs": 20,
+    "updates": {
+     "min": 318.0,
+     "median": 693.0,
+     "max": 2552.0,
+     "n": 20
+    },
+    "epochs": {
+     "min": 24.0,
+     "median": 78.5,
+     "max": 783.0,
+     "n": 20
+    },
+    "stops": {
+     "konvergiert": 20,
+     "Epochengrenze": 0,
+     "Korrekturgrenze": 0
+    },
+    "train_error_mean": 0.0,
+    "test_error_mean": 0.15971249999999998,
+    "test_error_min": 0.1285,
+    "test_error_max": 0.19275
+   },
+   "B": {
+    "converged": 20,
+    "runs": 20,
+    "updates": {
+     "min": 324.0,
+     "median": 923.5,
+     "max": 6599.0,
+     "n": 20
+    },
+    "epochs": {
+     "min": 28.0,
+     "median": 98.5,
+     "max": 2560.0,
+     "n": 20
+    },
+    "stops": {
+     "konvergiert": 20,
+     "Epochengrenze": 0,
+     "Korrekturgrenze": 0
+    },
+    "train_error_mean": 0.0,
+    "test_error_mean": 0.16663750000000002,
+    "test_error_min": 0.13025,
+    "test_error_max": 0.20225
+   },
+   "alle": {
+    "test_error_mean": 0.16317500000000001,
+    "test_error_se": 0.0028504835397273227,
+    "runs": 40,
+    "converged": 40
+   }
+  },
+  "Gauß σ = 0,2": {
+   "A": {
+    "converged": 10,
+    "runs": 20,
+    "updates": {
+     "min": 5478.0,
+     "median": 16192.0,
+     "max": 37105.0,
+     "n": 20
+    },
+    "epochs": {
+     "min": 435.0,
+     "median": 2400.0,
+     "max": 3000.0,
+     "n": 20
+    },
+    "stops": {
+     "konvergiert": 10,
+     "Epochengrenze": 10,
+     "Korrekturgrenze": 0
+    },
+    "train_error_mean": 0.0205,
+    "test_error_mean": 0.1723375,
+    "test_error_min": 0.12925,
+    "test_error_max": 0.2025
+   },
+   "B": {
+    "converged": 10,
+    "runs": 20,
+    "updates": {
+     "min": 3372.0,
+     "median": 17990.5,
+     "max": 37315.0,
+     "n": 20
+    },
+    "epochs": {
+     "min": 243.0,
+     "median": 2732.0,
+     "max": 3000.0,
+     "n": 20
+    },
+    "stops": {
+     "konvergiert": 10,
+     "Epochengrenze": 10,
+     "Korrekturgrenze": 0
+    },
+    "train_error_mean": 0.023999999999999997,
+    "test_error_mean": 0.17156249999999998,
+    "test_error_min": 0.1335,
+    "test_error_max": 0.21975
+   },
+   "alle": {
+    "test_error_mean": 0.17195,
+    "test_error_se": 0.003525061374261119,
+    "runs": 40,
+    "converged": 20
+   }
+  },
+  "Gauß σ = 0,4": {
+   "A": {
+    "converged": 0,
+    "runs": 20,
+    "updates": {
+     "min": 66464.0,
+     "median": 82890.0,
+     "max": 114552.0,
+     "n": 20
+    },
+    "epochs": {
+     "min": 3000.0,
+     "median": 3000.0,
+     "max": 3000.0,
+     "n": 20
+    },
+    "stops": {
+     "konvergiert": 0,
+     "Epochengrenze": 20,
+     "Korrekturgrenze": 0
+    },
+    "train_error_mean": 0.14425000000000002,
+    "test_error_mean": 0.16681249999999997,
+    "test_error_min": 0.092,
+    "test_error_max": 0.256
+   },
+   "B": {
+    "converged": 0,
+    "runs": 20,
+    "updates": {
+     "min": 62493.0,
+     "median": 81017.5,
+     "max": 101809.0,
+     "n": 20
+    },
+    "epochs": {
+     "min": 3000.0,
+     "median": 3000.0,
+     "max": 3000.0,
+     "n": 20
+    },
+    "stops": {
+     "konvergiert": 0,
+     "Epochengrenze": 20,
+     "Korrekturgrenze": 0
+    },
+    "train_error_mean": 0.13625000000000004,
+    "test_error_mean": 0.17398749999999996,
+    "test_error_min": 0.1065,
+    "test_error_max": 0.3495
+   },
+   "alle": {
+    "test_error_mean": 0.1704,
+    "test_error_se": 0.007284273541379471,
+    "runs": 40,
+    "converged": 0
+   }
+  },
+  "Gauß σ = 0,8": {
+   "A": {
+    "converged": 0,
+    "runs": 20,
+    "updates": {
+     "min": 102619.0,
+     "median": 118021.5,
+     "max": 140318.0,
+     "n": 20
+    },
+    "epochs": {
+     "min": 3000.0,
+     "median": 3000.0,
+     "max": 3000.0,
+     "n": 20
+    },
+    "stops": {
+     "konvergiert": 0,
+     "Epochengrenze": 20,
+     "Korrekturgrenze": 0
+    },
+    "train_error_mean": 0.19449999999999998,
+    "test_error_mean": 0.16035,
+    "test_error_min": 0.078,
+    "test_error_max": 0.26125
+   },
+   "B": {
+    "converged": 0,
+    "runs": 20,
+    "updates": {
+     "min": 99213.0,
+     "median": 118900.5,
+     "max": 136164.0,
+     "n": 20
+    },
+    "epochs": {
+     "min": 3000.0,
+     "median": 3000.0,
+     "max": 3000.0,
+     "n": 20
+    },
+    "stops": {
+     "konvergiert": 0,
+     "Epochengrenze": 20,
+     "Korrekturgrenze": 0
+    },
+    "train_error_mean": 0.193,
+    "test_error_mean": 0.16965,
+    "test_error_min": 0.07875,
+    "test_error_max": 0.368
+   },
+   "alle": {
+    "test_error_mean": 0.16499999999999998,
+    "test_error_se": 0.010554616045683274,
+    "runs": 40,
+    "converged": 0
+   }
+  },
+  "Polynom 2": {
+   "A": {
+    "converged": 0,
+    "runs": 20,
+    "updates": {
+     "min": 123623.0,
+     "median": 148895.5,
+     "max": 169585.0,
+     "n": 20
+    },
+    "epochs": {
+     "min": 3000.0,
+     "median": 3000.0,
+     "max": 3000.0,
+     "n": 20
+    },
+    "stops": {
+     "konvergiert": 0,
+     "Epochengrenze": 20,
+     "Korrekturgrenze": 0
+    },
+    "train_error_mean": 0.25425,
+    "test_error_mean": 0.184775,
+    "test_error_min": 0.0955,
+    "test_error_max": 0.309
+   },
+   "B": {
+    "converged": 0,
+    "runs": 20,
+    "updates": {
+     "min": 115970.0,
+     "median": 147428.5,
+     "max": 163075.0,
+     "n": 20
+    },
+    "epochs": {
+     "min": 3000.0,
+     "median": 3000.0,
+     "max": 3000.0,
+     "n": 20
+    },
+    "stops": {
+     "konvergiert": 0,
+     "Epochengrenze": 20,
+     "Korrekturgrenze": 0
+    },
+    "train_error_mean": 0.2425,
+    "test_error_mean": 0.18901250000000003,
+    "test_error_min": 0.07075,
+    "test_error_max": 0.47975
+   },
+   "alle": {
+    "test_error_mean": 0.18689375000000003,
+    "test_error_se": 0.014055951858634248,
+    "runs": 40,
+    "converged": 0
+   }
+  }
+ },
+ "marge": {
+  "Ringe Gauß σ = 1": {
+   "A": {
+    "runs": 240,
+    "instances_skipped": 0,
+    "ratio_free_b": {
+     "min": 0.003322247363402056,
+     "median": 0.166823720352834,
+     "max": 0.6312346222130778,
+     "n": 240
+    },
+    "ratio_phi1": {
+     "min": 0.003296138070964548,
+     "median": 0.16472610482339745,
+     "max": 0.6311223046446467,
+     "n": 240
+    },
+    "cos_min_per_instance": {
+     "min": 0.761410215759263,
+     "median": 0.822437202479183,
+     "max": 0.881553221936218,
+     "n": 30
+    }
+   },
+   "B": {
+    "runs": 240,
+    "instances_skipped": 0,
+    "ratio_free_b": {
+     "min": 0.0019190130713418292,
+     "median": 0.19444811538077,
+     "max": 0.6156148366054617,
+     "n": 240
+    },
+    "ratio_phi1": {
+     "min": 0.0018811265425970115,
+     "median": 0.1922268524872099,
+     "max": 0.6116488211879961,
+     "n": 240
+    },
+    "cos_min_per_instance": {
+     "min": 0.7053089618483537,
+     "median": 0.8194363185294125,
+     "max": 0.8593625722311682,
+     "n": 30
+    }
+   }
+  },
+  "Ringe Gauß σ = 0,5": {
+   "A": {
+    "runs": 240,
+    "instances_skipped": 0,
+    "ratio_free_b": {
+     "min": 0.00018499685015957193,
+     "median": 0.05720329221632063,
+     "max": 0.3394138311942902,
+     "n": 240
+    },
+    "ratio_phi1": {
+     "min": 0.00018576593120859738,
+     "median": 0.05742611813457073,
+     "max": 0.340749029917726,
+     "n": 240
+    },
+    "cos_min_per_instance": {
+     "min": 0.5237978804756893,
+     "median": 0.6927069534823576,
+     "max": 0.78936573902303,
+     "n": 30
+    }
+   },
+   "B": {
+    "runs": 240,
+    "instances_skipped": 0,
+    "ratio_free_b": {
+     "min": 0.00020240812379056965,
+     "median": 0.056647560041956785,
+     "max": 0.34672186530492277,
+     "n": 240
+    },
+    "ratio_phi1": {
+     "min": 0.00020314067446535917,
+     "median": 0.056875908876881695,
+     "max": 0.34811720112677036,
+     "n": 240
+    },
+    "cos_min_per_instance": {
+     "min": 0.552471166707309,
+     "median": 0.6762908937999511,
+     "max": 0.7953748256207112,
+     "n": 30
+    }
+   }
+  },
+  "Ringe Polynom 2": {
+   "A": {
+    "runs": 240,
+    "instances_skipped": 0,
+    "ratio_free_b": {
+     "min": 0.0020736867992830923,
+     "median": 0.19093290462184948,
+     "max": 0.5965276631672769,
+     "n": 240
+    },
+    "ratio_phi1": {
+     "min": 0.002849454019366506,
+     "median": 0.2619588228913702,
+     "max": 0.7992930736721537,
+     "n": 240
+    },
+    "cos_min_per_instance": {
+     "min": 0.8627688994031171,
+     "median": 0.914610445380537,
+     "max": 0.9533971342427106,
+     "n": 30
+    }
+   },
+   "B": {
+    "runs": 240,
+    "instances_skipped": 0,
+    "ratio_free_b": {
+     "min": 0.0002973465369813851,
+     "median": 0.18453362943863097,
+     "max": 0.5366361499249668,
+     "n": 240
+    },
+    "ratio_phi1": {
+     "min": 0.00039811748202494337,
+     "median": 0.25404096901525525,
+     "max": 0.7227846322839209,
+     "n": 240
+    },
+    "cos_min_per_instance": {
+     "min": 0.8425266260048768,
+     "median": 0.9139800992502953,
+     "max": 0.9508544337074352,
+     "n": 30
+    }
+   }
+  },
+  "Liefergebiet n = 100 Polynom 2": {
+   "A": {
+    "runs": 237,
+    "instances_skipped": 0,
+    "ratio_free_b": {
+     "min": 0.0003458952312346786,
+     "median": 0.1692324915126927,
+     "max": 0.8290493527993261,
+     "n": 237
+    },
+    "ratio_phi1": {
+     "min": 0.00035470664279868943,
+     "median": 0.17325657772351594,
+     "max": 0.8484954273239365,
+     "n": 237
+    },
+    "cos_min_per_instance": {
+     "min": 0.9879481484338757,
+     "median": 0.9953120340993443,
+     "max": 0.9989345890576796,
+     "n": 30
+    }
+   },
+   "B": {
+    "runs": 240,
+    "instances_skipped": 0,
+    "ratio_free_b": {
+     "min": 0.0010943191932506144,
+     "median": 0.17129723780690786,
+     "max": 0.7469478698269697,
+     "n": 240
+    },
+    "ratio_phi1": {
+     "min": 0.0011180299896610575,
+     "median": 0.17563922636003945,
+     "max": 0.7670502931160529,
+     "n": 240
+    },
+    "cos_min_per_instance": {
+     "min": 0.9868656143267132,
+     "median": 0.9937453350433199,
+     "max": 0.9993187116550494,
+     "n": 30
+    }
+   }
+  }
+ },
+ "sigmoid": {
+  "Sigmoid a = 1, c = −1": {
+   "converged": 0,
+   "runs": 30,
+   "updates": {
+    "min": 80607.0,
+    "median": 84993.5,
+    "max": 86476.0,
+    "n": 30
+   },
+   "epochs": {
+    "min": 1000.0,
+    "median": 1000.0,
+    "max": 1000.0,
+    "n": 30
+   },
+   "stops": {
+    "konvergiert": 0,
+    "Epochengrenze": 30,
+    "Korrekturgrenze": 0
+   },
+   "indefinite": 30
+  },
+  "Sigmoid a = 0,5, c = −1": {
+   "converged": 9,
+   "runs": 30,
+   "updates": {
+    "min": 25.0,
+    "median": 19878.0,
+    "max": 27761.0,
+    "n": 30
+   },
+   "epochs": {
+    "min": 2.0,
+    "median": 1000.0,
+    "max": 1000.0,
+    "n": 30
+   },
+   "stops": {
+    "konvergiert": 9,
+    "Epochengrenze": 21,
+    "Korrekturgrenze": 0
+   },
+   "indefinite": 30
+  },
+  "Sigmoid a = 0,1, c = −1": {
+   "converged": 30,
+   "runs": 30,
+   "updates": {
+    "min": 35.0,
+    "median": 41.0,
+    "max": 51.0,
+    "n": 30
+   },
+   "epochs": {
+    "min": 2.0,
+    "median": 3.0,
+    "max": 4.0,
+    "n": 30
+   },
+   "stops": {
+    "konvergiert": 30,
+    "Epochengrenze": 0,
+    "Korrekturgrenze": 0
+   },
+   "indefinite": 30
+  },
+  "Sigmoid a = 1, c = 0": {
+   "converged": 0,
+   "runs": 30,
+   "updates": {
+    "min": 42274.0,
+    "median": 51914.0,
+    "max": 61570.0,
+    "n": 30
+   },
+   "epochs": {
+    "min": 1000.0,
+    "median": 1000.0,
+    "max": 1000.0,
+    "n": 30
+   },
+   "stops": {
+    "konvergiert": 0,
+    "Epochengrenze": 30,
+    "Korrekturgrenze": 0
+   },
+   "indefinite": 30
+  },
+  "Sigmoid a = 0,1, c = 0": {
+   "converged": 0,
+   "runs": 30,
+   "updates": {
+    "min": 47865.0,
+    "median": 54339.5,
+    "max": 65060.0,
+    "n": 30
+   },
+   "epochs": {
+    "min": 1000.0,
+    "median": 1000.0,
+    "max": 1000.0,
+    "n": 30
+   },
+   "stops": {
+    "konvergiert": 0,
+    "Epochengrenze": 30,
+    "Korrekturgrenze": 0
+   },
+   "indefinite": 30
+  },
+  "Sigmoid a = 1, c = 1": {
+   "converged": 0,
+   "runs": 30,
+   "updates": {
+    "min": 43175.0,
+    "median": 50945.0,
+    "max": 60016.0,
+    "n": 30
+   },
+   "epochs": {
+    "min": 1000.0,
+    "median": 1000.0,
+    "max": 1000.0,
+    "n": 30
+   },
+   "stops": {
+    "konvergiert": 0,
+    "Epochengrenze": 30,
+    "Korrekturgrenze": 0
+   },
+   "indefinite": 30
+  },
+  "Sigmoid a = 0,1, c = 1": {
+   "converged": 0,
+   "runs": 30,
+   "updates": {
+    "min": 77642.0,
+    "median": 93326.0,
+    "max": 99327.0,
+    "n": 30
+   },
+   "epochs": {
+    "min": 1000.0,
+    "median": 1000.0,
+    "max": 1000.0,
+    "n": 30
+   },
+   "stops": {
+    "konvergiert": 0,
+    "Epochengrenze": 30,
+    "Korrekturgrenze": 0
+   },
+   "indefinite": 30
+  }
+ },
+ "kerntrick": {
+  "Ringe Polynom 2": {
+   "instances": 50,
+   "equal_runs": 50,
+   "max_rel_w_dual_vs_primal": 3.2713006686182217e-16,
+   "sklearn_equal": 50,
+   "updates": {
+    "min": 9.0,
+    "median": 14.5,
+    "max": 18.0,
+    "n": 50
+   }
+  },
+  "Ringe Polynom 3": {
+   "instances": 50,
+   "equal_runs": 50,
+   "max_rel_w_dual_vs_primal": 4.847959357402521e-16,
+   "sklearn_equal": 50,
+   "updates": {
+    "min": 22.0,
+    "median": 31.0,
+    "max": 39.0,
+    "n": 50
+   }
+  },
+  "Liefergebiet n = 100 Polynom 2": {
+   "instances": 50,
+   "equal_runs": 50,
+   "max_rel_w_dual_vs_primal": 1.612054163709493e-14,
+   "sklearn_equal": 50,
+   "updates": {
+    "min": 89.0,
+    "median": 310.0,
+    "max": 1767.0,
+    "n": 50
+   }
+  },
+  "Liefergebiet n = 100 Polynom 3": {
+   "instances": 50,
+   "equal_runs": 50,
+   "max_rel_w_dual_vs_primal": 2.666999565531864e-14,
+   "sklearn_equal": 50,
+   "updates": {
+    "min": 62.0,
+    "median": 205.5,
+    "max": 2349.0,
+    "n": 50
+   }
+  }
+ }
+}
