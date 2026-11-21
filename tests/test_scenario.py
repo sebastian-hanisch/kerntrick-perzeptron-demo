@@ -1,4 +1,4 @@
-"""Erzeuger: Eigenschaften der Regel, eingefrorene Werte je Erzeuger und Zufalls-Seed (SplitMix64, Bänder wegen `math.cos`/`math.sin` der C-Bibliothek), Etikettenoperationen."""
+"""Erzeuger: Eigenschaften der Regel, eingefrorene Werte je Erzeuger und Zufalls-Seed (SplitMix64, Bänder wegen `math.cos`/`math.sin` der C-Bibliothek), Labelsoperationen."""
 
 import math
 

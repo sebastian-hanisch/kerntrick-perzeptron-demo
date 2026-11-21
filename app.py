@@ -62,7 +62,7 @@ st.markdown(
     """
 Das **Perceptron** rechnet nur mit **Skalarprodukten** der Punkte. Ersetzt man jedes Skalarprodukt durch eine **Kernfunktion** (der **Kerntrick**), trennt dieselbe Regel auch Mengen,
 die eine Gerade nicht trennt, sofern der Kern im Merkmalsraum trennt (Monde: Polynom 2 nicht, Polynom 3 und Gauß-Kern ja). Die Seite zeigt das an ausgedachten 2D-Beispielen (XOR mit vier Punkten, zwei Ringe, Kunden im Liefergebiet, zwei Monde) und fragt, woran man
-merkt, dass es klappt: die Meldung „konvergiert“ sagt weniger, als man liest (bei kleiner Bandbreite fast nichts über Signal oder Rauschen der Etiketten). Gezählt werden **Korrekturen, Epochen, Zufalls-Seeds und Multiplikationen**.
+merkt, dass es klappt: die Meldung „konvergiert“ sagt weniger, als man liest (bei kleiner Bandbreite fast nichts über Signal oder Rauschen der Labels). Gezählt werden **Korrekturen, Epochen, Zufalls-Seeds und Multiplikationen**.
 Weiter unten: fünf **🔬 Experimente**, **🚧 Wo die Annahmen enden**, **⚠️ Annahmen, Grenzen und bekannte Probleme** und **📐 Mathematische Formulierung**.
 """
 )
@@ -121,12 +121,12 @@ with st.sidebar:
     ex4_sigma = st.select_slider("Bandbreite σ des Gauß-Kerns", C.SIGMAS, key="ex4_sigma", format_func=KK.fmt_num, help="Längenmaß in den Einheiten der Daten; γ = 1/(2σ²).")
     st.header("⚙️ Experiment 5: Die Falle")
     ex5_daten = st.selectbox("Daten", C.EX5_DATEN, key="ex5_daten", help="Ringe mit Lücke (n = 100) oder Liefergebiet ohne Lücke (n = 200).")
-    ex5_etiketten = st.selectbox("Etiketten", C.EX5_ETIKETTEN, key="ex5_etiketten", help="Wahr, 10 % der Etiketten vertauscht, oder alle zufällig vertauscht (gleiche Punkte).")
+    ex5_etiketten = st.selectbox("Labels", C.EX5_ETIKETTEN, key="ex5_etiketten", help="Wahr, 10 % der Labels vertauscht, oder alle zufällig vertauscht (gleiche Punkte).")
     ex5_kern = st.selectbox("Kern", list(C.EX5_KERNELS), key="ex5_kern", help="Das Sigmoid tanh(a x·y + c) ist im Allgemeinen kein Skalarprodukt: nur als Falle.")
     ex5_epochen = st.select_slider("Obergrenze der Epochen", C.EPOCH_CHOICES, key="ex5_epochen", format_func=lambda v: ev.de(v),
                                    help="Voreinstellung 3 000. Bis 50 000 rechnet die Seite mit Spinner; die Korrekturgrenze ist 300 000.")
     st.markdown("**Zufall**")
-    seed = st.number_input("Zufalls-Seed der Instanz", *PR.bounds("seed_input"), key="seed_input", step=1, help="Punkte, Reihenfolge und Etikettenvertauschung folgen aus diesem Zufalls-Seed.")
+    seed = st.number_input("Zufalls-Seed der Instanz", *PR.bounds("seed_input"), key="seed_input", step=1, help="Punkte, Reihenfolge und Labelsvertauschung folgen aus diesem Zufalls-Seed.")
     st.button("🎲 Neue Instanz generieren", width="stretch", on_click=PR.randomize_seed)
 
 PR.sync_query_params({k: st.session_state[k] for k in PR.SETTING_SPECS})
@@ -252,14 +252,14 @@ m4.metric("Kleinster Eigenwert der Gram-Matrix", ev.sci(ta.min_eigenvalue))
 kind, text = ev.verdict_trap(ta)
 getattr(st, kind)(text)
 
-st.markdown("**Zufallsetiketten, eingefroren** (Ringe mit Lücke, n = 100, Gauß-Kern, 60 Zufalls-Seeds in zwei Sätzen zu je 30; Messgrenze 50 000 Epochen, Korrekturgrenze 300 000)")
+st.markdown("**Zufalls-Labels, eingefroren** (Ringe mit Lücke, n = 100, Gauß-Kern, 60 Zufalls-Seeds in zwei Sätzen zu je 30; Messgrenze 50 000 Epochen, Korrekturgrenze 300 000)")
 zrows = []
 for s, row in sw["zufall"].items():
     a_, b_ = row["A"], row["B"]
     zrows.append([s, f"{ev.de(a_['converged'] + b_['converged'])} von 60", f"{ev.de(a_['within_3000'] + b_['within_3000'])} von 60",
                   ev._band(row, ("updates", "median")), ev._band(row, ("true_updates_median",)), f"{ev.de(a_['stops']['Korrekturgrenze'] + b_['stops']['Korrekturgrenze'])} von 60"])
-st.markdown(md_table(["σ", "konvergiert (Messgrenze)", "konvergiert innerhalb 3 000 Epochen", "Korrekturen, Median (beide Sätze)", "Korrekturen mit wahren Etiketten, Median", "Korrekturgrenze erreicht"], zrows))
-st.markdown("**Liefergebiet n = 200 mit 10 % vertauschten Etiketten, eingefroren** (40 Zufalls-Seeds in zwei Sätzen zu je 20, Grenze 3 000 Epochen, 4 000 frische Testpunkte)")
+st.markdown(md_table(["σ", "konvergiert (Messgrenze)", "konvergiert innerhalb 3 000 Epochen", "Korrekturen, Median (beide Sätze)", "Korrekturen mit wahren Labels, Median", "Korrekturgrenze erreicht"], zrows))
+st.markdown("**Liefergebiet n = 200 mit 10 % vertauschten Labels, eingefroren** (40 Zufalls-Seeds in zwei Sätzen zu je 20, Grenze 3 000 Epochen, 4 000 frische Testpunkte)")
 drows = []
 for k, row in sw["d2"].items():
     al = row["alle"]

@@ -19,7 +19,7 @@ def _unif(rng: SplitMix64, lo: float, hi: float) -> float:
 
 @dataclass(frozen=True)
 class Instance:
-    """Punkte X (n × 2), Etiketten y ∈ {−1, +1} (die gelernten), y_true die wahre Klasse nach der Erzeugerregel."""
+    """Punkte X (n × 2), Labels y ∈ {−1, +1} (die gelernten), y_true die wahre Klasse nach der Erzeugerregel."""
 
     name: str
     X: np.ndarray
@@ -90,9 +90,9 @@ def moons(n: int, seed: int, noise: float) -> Instance:
     return Instance("Monde", X, y, y.copy(), seed)
 
 
-# ------------------------------------------------------------------ Etiketten ändern
+# ------------------------------------------------------------------ Labels ändern
 def flip_labels(inst: Instance, fraction: float, seed: int) -> Instance:
-    """Genau round(fraction · n) Etiketten vertauscht (Auswahl ohne Zurücklegen per `shuffle` der Indizes), die wahre Klasse bleibt."""
+    """Genau round(fraction · n) Labels vertauscht (Auswahl ohne Zurücklegen per `shuffle` der Indizes), die wahre Klasse bleibt."""
     idx = list(range(inst.n))
     SplitMix64(seed ^ C.SALT_FLIP).shuffle(idx)
     k = int(round(fraction * inst.n))
@@ -103,7 +103,7 @@ def flip_labels(inst: Instance, fraction: float, seed: int) -> Instance:
 
 
 def random_labels(inst: Instance, seed: int) -> Instance:
-    """Zufallsetiketten: die Etiketten der gleichen Punkte werden per `shuffle` vertauscht (gleiche Zahl +1 und −1 wie vorher, wahre Klasse bleibt)."""
+    """Zufalls-Labels: die Labels der gleichen Punkte werden per `shuffle` vertauscht (gleiche Zahl +1 und −1 wie vorher, wahre Klasse bleibt)."""
     labels = [float(v) for v in inst.y]
     SplitMix64(seed ^ C.SALT_RANDOM_LABELS).shuffle(labels)
     return Instance(inst.name, inst.X, np.array(labels), inst.y_true, inst.seed)

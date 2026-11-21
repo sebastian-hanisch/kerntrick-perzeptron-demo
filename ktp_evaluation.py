@@ -492,7 +492,7 @@ def verdict_bandwidth(a: BandwidthAnalysis) -> tuple[str, str]:
 
 
 def trap_summary_for(a: TrapAnalysis) -> str:
-    """Eingefrorene Zeile D1 (zufällige Etiketten auf den Ringen) zum gewählten Gauß-Kern, sonst leer."""
+    """Eingefrorene Zeile D1 (zufällige Labels auf den Ringen) zum gewählten Gauß-Kern, sonst leer."""
     if a.etiketten != "zufällig" or a.daten != C.EX5_DATEN[0] or a.spec[0] != "gauss":
         return ""
     row = load_sweep()["zufall"].get(KK.fmt_num(a.spec[1]))
@@ -500,9 +500,9 @@ def trap_summary_for(a: TrapAnalysis) -> str:
         return ""
     conv = sum(row[k]["converged"] for k in "AB")
     w3 = sum(row[k]["within_3000"] for k in "AB")
-    return (f" Eingefrorene Messung (Ringe, n = 100, zufällige Etiketten, 60 Zufalls-Seeds in zwei Sätzen, σ = {KK.fmt_num(a.spec[1])}): bei der Messgrenze von 50 000 Epochen "
+    return (f" Eingefrorene Messung (Ringe, n = 100, zufällige Labels, 60 Zufalls-Seeds in zwei Sätzen, σ = {KK.fmt_num(a.spec[1])}): bei der Messgrenze von 50 000 Epochen "
             f"konvergiert das Perceptron in {de(conv)} von 60, mit 3 000 Epochen in {de(w3)} von 60; Korrekturen im Median {_band(row, ('updates', 'median'))} gegen "
-            f"{_band(row, ('true_updates_median',))} mit den wahren Etiketten.")
+            f"{_band(row, ('true_updates_median',))} mit den wahren Labels.")
 
 
 def verdict_trap(a: TrapAnalysis) -> tuple[str, str]:
@@ -518,12 +518,12 @@ def verdict_trap(a: TrapAnalysis) -> tuple[str, str]:
         kind = "warning"
     vergleich = ""
     if a.etiketten != "wahr":
-        vergleich = f" (mit den wahren Etiketten auf denselben Punkten: {de(a.run_true.updates)}{'' if a.run_true.converged else ', Grenze erreicht'})"
-    text = (f"**{kern}, Etiketten {a.etiketten}, {a.daten}:** {meldung} Korrekturen: {de(r.updates)}{vergleich}. "
+        vergleich = f" (mit den wahren Labels auf denselben Punkten: {de(a.run_true.updates)}{'' if a.run_true.converged else ', Grenze erreicht'})"
+    text = (f"**{kern}, Labels {a.etiketten}, {a.daten}:** {meldung} Korrekturen: {de(r.updates)}{vergleich}. "
             f"Trainingsfehler {pct(a.train_error, 1)}, Testfehler gegen die wahre Klasse {pct(a.test_error, 1)} ({de(C.N_TEST)} frische Punkte).")
     if a.etiketten == "zufällig" and r.converged and a.run_true.converged and a.run_true.updates:
         kind = "warning"
-        text += (f" Dieselbe Meldung „konvergiert“ wie bei wahren Etiketten, aber das {de(r.updates / a.run_true.updates, 1)}-Fache an Korrekturen: aus der Meldung allein ist der Unterschied nicht zu sehen.")
+        text += (f" Dieselbe Meldung „konvergiert“ wie bei wahren Labels, aber das {de(r.updates / a.run_true.updates, 1)}-Fache an Korrekturen: aus der Meldung allein ist der Unterschied nicht zu sehen.")
     if a.indefinite:
         kind = "warning"
         text += f" Die Gram-Matrix ist indefinit (kleinster Eigenwert {de(a.min_eigenvalue, 3)}): das Sigmoid ist hier kein Skalarprodukt, und der Lauf meldet dazu nichts."
@@ -534,7 +534,7 @@ def verdict_trap(a: TrapAnalysis) -> tuple[str, str]:
 
 
 def verdict_d2() -> tuple[str, str]:
-    """Ehrlicher Negativbefund (eingefroren): Konvergenzmeldung und Testfehler bei 10 % vertauschten Etiketten (Liefergebiet, n = 200, 40 Zufalls-Seeds je Zeile)."""
+    """Ehrlicher Negativbefund (eingefroren): Konvergenzmeldung und Testfehler bei 10 % vertauschten Labels (Liefergebiet, n = 200, 40 Zufalls-Seeds je Zeile)."""
     d2 = load_sweep()["d2"]
     gauss = [(k, v["alle"]) for k, v in d2.items() if k.startswith("Gauß")]
     means = [r["test_error_mean"] for _, r in gauss]
@@ -573,7 +573,7 @@ def assumptions_table_markdown() -> str:
     rows = [
         ("Die Punkte sind im Merkmalsraum trennbar",
          f"Sonst konvergiert das Perceptron nie: bei XOR mit linearem Kern kehrt der Zustand nach einer Epoche mit 4 Korrekturen zu w = 0 zurück (exakt). Aber „Grenze erreicht“ heißt nicht „nicht trennbar“: "
-         f"bei zufälligen Etiketten und σ = 0,25 meldet die Seite mit 3 000 Epochen in {de(not3000)} von 60 Zufalls-Seeds „Grenze erreicht“, obwohl alle {de(pd)} trennbar sind (Gram-Matrix positiv definit)."),
+         f"bei zufälligen Labels und σ = 0,25 meldet die Seite mit 3 000 Epochen in {de(not3000)} von 60 Zufalls-Seeds „Grenze erreicht“, obwohl alle {de(pd)} trennbar sind (Gram-Matrix positiv definit)."),
         ("Der Kern ist ein Skalarprodukt (Gram-Matrix positiv semidefinit)",
          f"Sigmoid auf den Ringen (n = 100 > d = 2): die Gram-Matrix ist in {de(sig_ind)} von 30 Zufalls-Seeds indefinit, in allen {len(sig)} Parametersätzen; das Perceptron läuft ohne Meldung, konvergiert in "
          f"{sig_conv}. Konvergiert es, ist die Trennung der Trainingspunkte gültig, aber die Schranke hat keinen Merkmalsraum mehr. Eine Prüfung des Kerns gehört nicht zu dieser Seite."),
@@ -583,8 +583,8 @@ def assumptions_table_markdown() -> str:
         ("Die Bandbreite passt zu den Daten",
          f"Nur an den Ringen gemessen: die Zahl der Korrekturen ist U-förmig in σ ({_band(ub[KK.fmt_num(0.02)], ('updates', 'median'))} bei σ = 0,02, {_band(ub[KK.fmt_num(1.0)], ('updates', 'median'))} bei σ = 1, "
          f"{_band(ub[KK.fmt_num(8.0)], ('updates', 'median'))} bei σ = 8, Mediane). Liefergebiet und Monde: nicht gemessen."),
-        ("Die Etiketten stimmen",
-         f"Mit zufälligen Etiketten auf denselben Ringen braucht das Perceptron mehr Korrekturen als mit den wahren Etiketten; Verhältnis der Mediane: {ratios['0,05']} (σ = 0,05), {ratios['0,1']} (σ = 0,1), {ratios['0,25']} (σ = 0,25), und meldet dasselbe „konvergiert“."),
+        ("Die Labels stimmen",
+         f"Mit zufälligen Labels auf denselben Ringen braucht das Perceptron mehr Korrekturen als mit den wahren Labels; Verhältnis der Mediane: {ratios['0,05']} (σ = 0,05), {ratios['0,1']} (σ = 0,1), {ratios['0,25']} (σ = 0,25), und meldet dasselbe „konvergiert“."),
         ("Nutzen im Betrieb",
          "Nicht belegt. Die Punkte sind ausgedacht; in den gelesenen Quellen gab es keine Messung, ob Kernmethoden in Logistik, Lager oder Fertigung bessere Entscheidungen liefern."),
     ]
@@ -609,13 +609,13 @@ def limits_markdown() -> str:
 
 
 MATH_LESEHILFE = (
-    "**Lesehilfe.** *Gegeben:* Punkte $x_i \\in \\mathbb{R}^2$ mit Etiketten $y_i \\in \\{-1, +1\\}$, $i = 1, \\dots, n$, und eine Kernfunktion $K$. "
+    "**Lesehilfe.** *Gegeben:* Punkte $x_i \\in \\mathbb{R}^2$ mit Labels $y_i \\in \\{-1, +1\\}$, $i = 1, \\dots, n$, und eine Kernfunktion $K$. "
     "*Gesucht:* Zähler $\\alpha_i \\in \\{0, 1, 2, \\dots\\}$, mit denen $f$ jeden Punkt richtig einordnet ($y_i f(x_i) > 0$). *Maß:* Zahl der Korrekturen (Summe der $\\alpha_i$) und Zahl der Epochen."
 )
 MATH_SYMBOLE = """
 | Symbol | Bedeutung |
 |---|---|
-| $x, y$ | Punkt in $\\mathbb{R}^p$ (hier $p = 2$) und Etikett $y_i \\in \\{-1, +1\\}$; $y$ in $K(x, y)$ meint einen zweiten Punkt |
+| $x, y$ | Punkt in $\\mathbb{R}^p$ (hier $p = 2$) und Label $y_i \\in \\{-1, +1\\}$; $y$ in $K(x, y)$ meint einen zweiten Punkt |
 | $\\varphi$ | Merkmalsabbildung; wird nie ausgerechnet, nur über $K(x, x') = \\langle \\varphi(x), \\varphi(x') \\rangle$ benutzt |
 | $K$, $\\tilde K$ | Kernfunktion; $\\tilde K = K + 1$ mit dem Bias als Zusatzkoordinate |
 | $\\alpha_i$ | Zahl der Korrekturen des Punktes $i$ |

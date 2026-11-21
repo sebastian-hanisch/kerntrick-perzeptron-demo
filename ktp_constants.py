@@ -9,7 +9,7 @@ RING_INNER, RING_OUTER, RING_WIDTH = 1.0, 2.0, 0.1       # Radius 1 und 2, Breit
 DELIVERY_RADIUS = math.sqrt(2.0 / math.pi)               # Kreis mit halber Fläche des Quadrats [−1, 1]²
 MOONS_NOISE = 0.1                                        # Halbbreite des beschränkten Rauschens der Monde mit Rauschen
 N_TEST = 1000                                            # frische Testpunkte für den Testfehler gegen die wahre Klasse
-D2_NOISE = 0.1                                           # Anteil vertauschter Etiketten („10 % vertauscht“)
+D2_NOISE = 0.1                                           # Anteil vertauschter Labels („10 % vertauscht“)
 
 # Strom-Kennungen: je Zweck ein eigener SplitMix64-Strom aus demselben Zufalls-Seed
 SALT_ORDER = 0x5851F42D4C957F2D
@@ -74,7 +74,7 @@ PRESETS = {
     "Ringe: Innenstadt gegen Umland": {"ex3_n": 100},
     "Liefergebiet ohne Lücke": {"ex3_daten": DATEN_LIEFER, "ex3_kern": kernel_name(("poly", 2)), "ex3_n": 100},
     "Monde": {"ex3_daten": DATEN_MONDE_R, "ex3_kern": kernel_name(("gauss", 0.5)), "ex3_n": 100},
-    "Zufallsetiketten": {"ex5_etiketten": "zufällig", "ex5_kern": kernel_name(("gauss", 0.1))},
+    "Zufalls-Labels": {"ex5_etiketten": "zufällig", "ex5_kern": kernel_name(("gauss", 0.1))},
     "Schmale Bandbreite (σ = 0,05)": {"ex4_sigma": 0.05},
     "Breite Bandbreite (σ = 8)": {"ex4_sigma": 8.0},
 }
@@ -83,7 +83,7 @@ PRESET_HELP = {
     "Ringe: Innenstadt gegen Umland": "Experiment 3: zwei Ringe (Radius 1 und 2), 100 Punkte, Gauß-Kern σ = 1.",
     "Liefergebiet ohne Lücke": "Experiment 3: Kunden gleichverteilt im Quadrat, Klasse +1 im Kreis mit halber Fläche, 100 Punkte, Polynom 2.",
     "Monde": "Experiment 3: zwei Mondbögen mit Rauschen 0,1, 100 Punkte, Gauß-Kern σ = 0,5.",
-    "Zufallsetiketten": "Experiment 5: dieselben Ringe mit zufällig vertauschten Etiketten, Gauß-Kern σ = 0,1: das Perceptron meldet „konvergiert“.",
+    "Zufalls-Labels": "Experiment 5: dieselben Ringe mit zufällig vertauschten Labels, Gauß-Kern σ = 0,1: das Perceptron meldet „konvergiert“.",
     "Schmale Bandbreite (σ = 0,05)": "Experiment 4: sehr schmaler Gauß-Kern, die Gram-Matrix ähnelt der Einheitsmatrix.",
     "Breite Bandbreite (σ = 8)": "Experiment 4: sehr breiter Gauß-Kern, die Gram-Matrix ähnelt der Einsmatrix.",
 }

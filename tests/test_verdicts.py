@@ -169,16 +169,16 @@ def _trap(etiketten="zufällig", spec=("gauss", 0.1), conv=True, updates=526, tr
 def test_trap_random_labels_converge_with_the_same_message_and_more_corrections():
     kind, text = ev.verdict_trap(_trap())
     assert kind == "warning"
-    assert "Meldung: „konvergiert nach 69 Epochen“" in text and "Korrekturen: 526 (mit den wahren Etiketten auf denselben Punkten: 20)" in text
+    assert "Meldung: „konvergiert nach 69 Epochen“" in text and "Korrekturen: 526 (mit den wahren Labels auf denselben Punkten: 20)" in text
     assert "Trainingsfehler 0,0 %, Testfehler gegen die wahre Klasse 47,1 % (1 000 frische Punkte)" in text
     assert "das 26,3-Fache an Korrekturen: aus der Meldung allein ist der Unterschied nicht zu sehen" in text and "Kleinster Eigenwert der Gram-Matrix: 9,8·10⁻³" in text
     assert "60 Zufalls-Seeds in zwei Sätzen, σ = 0,1): bei der Messgrenze von 50 000 Epochen konvergiert das Perceptron in 60 von 60, mit 3 000 Epochen in 58 von 60" in text
-    assert "Korrekturen im Median 359 bis 379 gegen 20 mit den wahren Etiketten" in text
+    assert "Korrekturen im Median 359 bis 379 gegen 20 mit den wahren Labels" in text
 
 
 def test_trap_true_labels_have_no_comparison_and_no_frozen_row():
     kind, text = ev.verdict_trap(_trap(etiketten="wahr", true_updates=18, updates=18, epochs=3, test=0.0))
-    assert kind == "success" and "mit den wahren Etiketten" not in text and "Eingefrorene Messung" not in text and "Fache" not in text
+    assert kind == "success" and "mit den wahren Labels" not in text and "Eingefrorene Messung" not in text and "Fache" not in text
 
 
 def test_trap_limit_reached_says_it_is_not_not_separable():

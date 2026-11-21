@@ -11,25 +11,25 @@ in Logistik, Lager oder Fertigung bessere Entscheidungen liefern. Gezählt werde
 ## Warum dieses Problem
 
 Das Perceptron rechnet nur mit Skalarprodukten. Wer sie durch eine Kernfunktion ersetzt (der **Kerntrick**), trennt ohne Änderung der Regel auch Mengen, die eine Gerade nicht trennt, sofern der Kern im Merkmalsraum trennt (Monde: Polynom 2 nicht, Polynom 3 und Gauß-Kern ja). Die Kernfrage der Demo ist die zweite:
-woran merkt man, dass es klappt? Bei kleiner Bandbreite (σ = 0,05 und 0,1) sagt „konvergiert“ nicht, ob die Etiketten Signal oder Rauschen sind: auch mit Zufallsetiketten konvergieren 59 und 58 von 60 Läufen innerhalb von 3 000 Epochen; bei σ = 0,5 trennt die Meldung mit 3 000 Epochen (0 von 60 mit Zufallsetiketten gegen 60 von 60 mit wahren Etiketten, Ringe, n = 100). Bei einem Kern, der kein Skalarprodukt ist, kommt vom Lauf selbst keine Warnung (die Seite zeigt den kleinsten Eigenwert der Gram-Matrix).
+woran merkt man, dass es klappt? Bei kleiner Bandbreite (σ = 0,05 und 0,1) sagt „konvergiert“ nicht, ob die Labels Signal oder Rauschen sind: auch mit Zufalls-Labels konvergieren 59 und 58 von 60 Läufen innerhalb von 3 000 Epochen; bei σ = 0,5 trennt die Meldung mit 3 000 Epochen (0 von 60 mit Zufalls-Labels gegen 60 von 60 mit wahren Labels, Ringe, n = 100). Bei einem Kern, der kein Skalarprodukt ist, kommt vom Lauf selbst keine Warnung (die Seite zeigt den kleinsten Eigenwert der Gram-Matrix).
 In der Reihe kehrt dieses Motiv wieder („der Löser meldet nichts“); hier ist es die schwache Form: die Meldung ist da, sie sagt nur weniger, als man liest. Hauptbeleg ist Experiment 5.
 
 ## Befunde und Korrekturen gegenüber dem Plan
 
-Die Zahlen des Plans stammen aus Vormessungen mit dem Zufallsstrom von NumPy; die Seite rechnet mit SplitMix64 (`ktp_rng.py`). Alle Zahlen unten sind mit dem Strom der Seite neu gemessen (Satz A: Zufalls-Seeds 1 bis 30, Satz B: 1001 bis 1030, frisch). Für die Monde, das Liefergebiet mit n = 200 und die vertauschten Etiketten gelten je Satz 20 Zufalls-Seeds (ab 1 bzw. ab 1001), das Sigmoid nutzt nur Satz A.
+Die Zahlen des Plans stammen aus Vormessungen mit dem Zufallsstrom von NumPy; die Seite rechnet mit SplitMix64 (`ktp_rng.py`). Alle Zahlen unten sind mit dem Strom der Seite neu gemessen (Satz A: Zufalls-Seeds 1 bis 30, Satz B: 1001 bis 1030, frisch). Für die Monde, das Liefergebiet mit n = 200 und die vertauschten Labels gelten je Satz 20 Zufalls-Seeds (ab 1 bzw. ab 1001), das Sigmoid nutzt nur Satz A.
 Abweichungen vom Plan:
 
 - **Marge der gefundenen Trennung** im Median 0,167 und 0,194 der größten (Ringe, Gauß σ = 1, zwei Sätze, Maß mit freiem b); der Plan nannte 0,181 und 0,178. Gleiche Größenordnung, die Zahl ist ein Band über Zufalls-Seeds, kein Punktwert.
 - **Monde:** mit dem eigenen Erzeuger (gleichverteilte Winkel, beschränktes Rauschen) konvergiert Polynom 2 je Rauschstufe (0 und 0,1) in 0 von 40 Läufen (20 je Satz, zwei Sätze); eine Prüfung mit einem anderen Erzeuger hatte 1 von 20 gefunden. Die Zeile hängt am Erzeuger.
-- **Zufallsetiketten, σ = 0,5:** mit der Messgrenze 50 000 Epochen und 300 000 Korrekturen konvergieren 12 von 60 Läufen; die Korrekturgrenze von 300 000 greift in 41 von 60 Läufen. Der Plan nannte nur die Grenze 3 000 Epochen (dort 0 von 60 bei σ = 0,5).
+- **Zufalls-Labels, σ = 0,5:** mit der Messgrenze 50 000 Epochen und 300 000 Korrekturen konvergieren 12 von 60 Läufen; die Korrekturgrenze von 300 000 greift in 41 von 60 Läufen. Der Plan nannte nur die Grenze 3 000 Epochen (dort 0 von 60 bei σ = 0,5).
   Bei σ = 0,25 liegt der größte Wert bei 166 997 Korrekturen (Plan: 197 098), die Korrekturgrenze bindet dort nicht.
-- **10 % vertauschte Etiketten im Liefergebiet (n = 200):** Testfehler gegen die wahre Klasse 0,158 bis 0,172 in den Gauß-Zeilen (Plan: 0,148 bis 0,164); der Negativbefund bleibt: die Meldung trennt gute und schlechte Läufe nicht.
+- **10 % vertauschte Labels im Liefergebiet (n = 200):** Testfehler gegen die wahre Klasse 0,158 bis 0,172 in den Gauß-Zeilen (Plan: 0,148 bis 0,164); der Negativbefund bleibt: die Meldung trennt gute und schlechte Läufe nicht.
 - **Korrekturen im Liefergebiet bei n = 200** im Median 797 bis 1 107,5 (Plan: 966). Die Schranke ist dort im Median das 93,5- bis 129,8-Fache der Korrekturen.
 - Sigmoid a = 0,5, c = −1: 9 von 30 Läufen konvergieren (Plan: 5 von 30); die Zeile hängt am Erzeuger.
 
 ## Modell
 
-Punkte x_i ∈ ℝ², Etiketten y_i ∈ {−1, +1}. **Regel:** wenn y_i f(x_i) ≤ 0 (der Fall 0 zählt als Fehler), steigt der Zähler α_i um 1 (**Korrektur**); f(x) = Σ_j α_j y_j K̃(x_j, x) mit K̃ = K + 1 (der Bias als Zusatzkoordinate).
+Punkte x_i ∈ ℝ², Labels y_i ∈ {−1, +1}. **Regel:** wenn y_i f(x_i) ≤ 0 (der Fall 0 zählt als Fehler), steigt der Zähler α_i um 1 (**Korrektur**); f(x) = Σ_j α_j y_j K̃(x_j, x) mit K̃ = K + 1 (der Bias als Zusatzkoordinate).
 Start α = 0, deshalb hat eine Lernrate keine Wirkung auf die Entscheidungen. **Epoche** = ein Durchlauf in fester Reihenfolge (je Zufalls-Seed eine feste Zufallsfolge; Mischen in jeder Epoche ist ein Schalter, nicht gemessen);
 **konvergiert** = eine Epoche ohne Korrektur; „Grenze erreicht“ heißt nicht „nicht trennbar“. **Der Kerntrick besteht darin, das Skalarprodukt überall durch K̃ zu ersetzen und sonst nichts zu ändern.**
 Kerne: linear, Polynom (x·y + 1)^d mit d = 2, 3, Gauß exp(−‖x − y‖²/(2σ²)) mit der Bandbreite σ (γ = 1/(2σ²)), Sigmoid tanh(a x·y + c) nur als Falle.
@@ -65,8 +65,8 @@ Zufallsergebnisse sind Bänder über die genannten Zufalls-Seeds; jede Zahl nenn
 | Wird die Schranke eingehalten? | In 540 von 540 zertifizierten Läufen (Ringe, Gauß, 9 Bandbreiten) und 40 von 40 (Liefergebiet n = 200, Polynom 2): keine Überschreitung; die Mediane der Schranke in den Ringe-Zeilen liegen je nach σ zwischen 33,5 und 14 980 | `test_claims.py` |
 | Welche Trennung findet das Perceptron? | Irgendeine, die erste: im Median 0,167 und 0,194 der größten Marge (Ringe, Gauß σ = 1), 0,057 (σ = 0,5), Polynom 2: 0,185 bis 0,191 mit freiem b gegen 0,254 bis 0,262 mit dem Bias als Koordinate; Liefergebiet (n = 100, Polynom 2): 0,169 bis 0,171 | `test_claims.py` |
 | Hängt die gefundene Trennung an der Reihenfolge? | Der kleinste Kosinus der Normalen zweier Reihenfolgen derselben Instanz liegt im Median bei 0,819 bis 0,822 (Gauß σ = 1), 0,676 bis 0,693 (σ = 0,5), 0,914 bis 0,915 (Polynom 2), 0,994 bis 0,995 (Liefergebiet) | `test_claims.py` |
-| Zufallsetiketten, Gauß-Kern? | Alle 60 Instanzen sind trennbar (verschiedene Punkte, Gram-Matrix positiv definit, K c = y mit Residuum unter 10⁻³ gelöst); „konvergiert“ bei 50 000 Epochen: 60 / 60 / 58 / 12 von 60 für σ = 0,05 / 0,1 / 0,25 / 0,5, **bei 3 000 Epochen aber nur 59 / 58 / 39 / 0 von 60**; Korrekturen im Median 118 bis 121 / 359 bis 379 / 6 624 bis 8 505 gegen 36 bis 38 / 20 / 16 mit den wahren Etiketten | `test_claims.py` |
-| Hilft „konvergiert“ bei 10 % vertauschten Etiketten? | Nein: Testfehler gegen die wahre Klasse in den Gauß-Zeilen 0,158 bis 0,172, ob alle 40, 20 von 40 oder keiner der 40 Läufe konvergieren (Tabelle unten) | `test_claims.py` |
+| Zufalls-Labels, Gauß-Kern? | Alle 60 Instanzen sind trennbar (verschiedene Punkte, Gram-Matrix positiv definit, K c = y mit Residuum unter 10⁻³ gelöst); „konvergiert“ bei 50 000 Epochen: 60 / 60 / 58 / 12 von 60 für σ = 0,05 / 0,1 / 0,25 / 0,5, **bei 3 000 Epochen aber nur 59 / 58 / 39 / 0 von 60**; Korrekturen im Median 118 bis 121 / 359 bis 379 / 6 624 bis 8 505 gegen 36 bis 38 / 20 / 16 mit den wahren Labels | `test_claims.py` |
+| Hilft „konvergiert“ bei 10 % vertauschten Labels? | Nein: Testfehler gegen die wahre Klasse in den Gauß-Zeilen 0,158 bis 0,172, ob alle 40, 20 von 40 oder keiner der 40 Läufe konvergieren (Tabelle unten) | `test_claims.py` |
 | Sigmoid, kein Skalarprodukt (Grenze 1 000 Epochen)? | Ringe, n = 100 > d = 2: Gram-Matrix in 30 von 30 Zufalls-Seeds indefinit in allen 7 Parametersätzen; der Lauf meldet nichts; 0, 9 und 30 von 30 konvergieren bei a = 1, c = −1 / a = 0,5, c = −1 / a = 0,1, c = −1 (dort 41 Korrekturen) | `test_claims.py` |
 
 **Ringe, Gauß-Kern, nach Bandbreite** (je 30 Zufalls-Seeds in zwei Sätzen, Grenze 20 000 Epochen; alle 540 Läufe konvergieren): Median der beiden Sätze, Bereich über alle 60 Läufe, Epochen im Median, Schranke R̃²‖w*‖² im Median
@@ -85,9 +85,9 @@ Zufallsergebnisse sind Bänder über die genannten Zufalls-Seeds; jede Zahl nenn
 
 Die Aussage „kleine Bandbreite verlängert das Perceptron nicht“ gilt nur bis σ = 0,25 (der Bereich der ersten Vormessung): darunter wächst die Zahl der Korrekturen (σ = 0,1: 20, σ = 0,05: 36 bis 38, σ = 0,02: 71 bis 72).
 
-**Zufallsetiketten auf den Ringen (n = 100)**, 60 Zufalls-Seeds in zwei Sätzen zu je 30, Messgrenze 50 000 Epochen und 300 000 Korrekturen:
+**Zufalls-Labels auf den Ringen (n = 100)**, 60 Zufalls-Seeds in zwei Sätzen zu je 30, Messgrenze 50 000 Epochen und 300 000 Korrekturen:
 
-| σ | konvergiert | innerhalb 3 000 Epochen | Korrekturen (Median) | Bereich | wahre Etiketten (Median) | Korrekturgrenze erreicht | Epochengrenze erreicht | Verhältnis der Mediane |
+| σ | konvergiert | innerhalb 3 000 Epochen | Korrekturen (Median) | Bereich | wahre Labels (Median) | Korrekturgrenze erreicht | Epochengrenze erreicht | Verhältnis der Mediane |
 |---|---|---|---|---|---|---|---|---|
 | 0,05 | 60 von 60 | 59 von 60 | 118 bis 121 | 80 bis 11 630 | 36 bis 38 | 0 | 0 | 3,2 bis 3,3 |
 | 0,1 | 60 von 60 | 58 von 60 | 359 bis 379 | 102 bis 22 135 | 20 | 0 | 0 | 17,9 bis 18,9 |
@@ -97,7 +97,7 @@ Die Aussage „kleine Bandbreite verlängert das Perceptron nicht“ gilt nur bi
 „Grenze erreicht“ ist nicht „nicht trennbar“: bei σ = 0,25 meldet die Seite mit 3 000 Epochen in 21 von 60 Zufalls-Seeds „Grenze erreicht“, obwohl alle 60 trennbar sind (bei 50 000 Epochen: 2 von 60). Bei σ = 0,5 ist der Median
 eine untere Schranke, weil die Korrekturgrenze in 41 von 60 Läufen greift.
 
-**Liefergebiet n = 200 mit 10 % vertauschten Etiketten** (40 Zufalls-Seeds in zwei Sätzen zu je 20, Grenze 3 000 Epochen, 4 000 frische Testpunkte; Fehler gegen die **wahre** Klasse):
+**Liefergebiet n = 200 mit 10 % vertauschten Labels** (40 Zufalls-Seeds in zwei Sätzen zu je 20, Grenze 3 000 Epochen, 4 000 frische Testpunkte; Fehler gegen die **wahre** Klasse):
 
 | Kern | konvergiert | Korrekturen (Median) | Trainingsfehler (Mittel) | Testfehler (Mittel, Standardfehler) |
 |---|---|---|---|---|
@@ -109,7 +109,7 @@ eine untere Schranke, weil die Korrekturgrenze in 41 von 60 Läufen greift.
 | Polynom 2 | 0 von 40 | 147 428,5 bis 148 895,5 | 0,248 | 0,187 (0,014) |
 
 **Ehrlicher Negativbefund:** die Zeilen ohne Konvergenz (0,170; 0,165) sind nicht besser als die mit Konvergenz (0,158; 0,163) und in diesen Zahlen auch nicht erkennbar schlechter; die Differenz benachbarter Gauß-Zeilen ist höchstens 0,009
-(1,9 Standardfehler der Differenz, innerhalb der Streuung). Der Zeilenvergleich vermengt Konvergenz mit σ; innerhalb der Zeile σ = 0,2 ist der Testfehler konvergierter und nicht konvergierter Läufe gleich (0,171 gegen 0,173, 20 Läufe je Gruppe; Kontrollmessung, nicht in `ktp_sweep.json`, nicht im Test). Was unterscheidet, ist die Zahl der Korrekturen derselben Punkte mit wahren und mit zufälligen Etiketten (Tabelle oben), nicht die Meldung. Die Aussage „Auswendiglernen schadet“ ist hier
+(1,9 Standardfehler der Differenz, innerhalb der Streuung). Der Zeilenvergleich vermengt Konvergenz mit σ; innerhalb der Zeile σ = 0,2 ist der Testfehler konvergierter und nicht konvergierter Läufe gleich (0,171 gegen 0,173, 20 Läufe je Gruppe; Kontrollmessung, nicht in `ktp_sweep.json`, nicht im Test). Was unterscheidet, ist die Zahl der Korrekturen derselben Punkte mit wahren und mit zufälligen Labels (Tabelle oben), nicht die Meldung. Die Aussage „Auswendiglernen schadet“ ist hier
 **nicht** belegt; ohne ein Vergleichsverfahren mit abgestimmtem C darf sie nicht stehen.
 
 ## Zahl → Test
@@ -132,7 +132,7 @@ Nicht im Test: die Verhältnisse in den Spalten „Verhältnis der Mediane“ (a
 
 ## Verifikation
 
-- **Kern:** das Perceptron gegen Handrechnung (zwei Punkte, XOR), schnelle gegen Punkt-für-Punkt-Fassung, Eigenschaften (Spiegeln der Etiketten, Umnummerieren, Drehen, Skalieren der Gram-Matrix, Lernrate), Randfälle (`tests/test_perceptron.py`, `tests/test_edge_cases.py`).
+- **Kern:** das Perceptron gegen Handrechnung (zwei Punkte, XOR), schnelle gegen Punkt-für-Punkt-Fassung, Eigenschaften (Spiegeln der Labels, Umnummerieren, Drehen, Skalieren der Gram-Matrix, Lernrate), Randfälle (`tests/test_perceptron.py`, `tests/test_edge_cases.py`).
 - **Orakel** (`tests/test_oracle_kerntrick.py`): dual gegen primal im Tensorraum gegen `sklearn.linear_model.Perceptron`; Kern gegen Merkmalsraum; größte Trennung gegen Aufzählung aller Stützmengen, `SVC` und nichtnegative kleinste Quadrate; Gauß-Marge auf XOR gegen die geschlossene Form;
   kleinster Eigenwert gegen `numpy.linalg.eigvalsh`; Literaturwert Cortes/Vapnik 1995 (Polynomkern, Grad-2-Merkmal).
 - **Handbeispiele** (`tests/test_handbeispiele.py`, `tests/handbeispiel_exakt.py`): 304 Prüfungen in exakten Brüchen, dann die App gegen dieselben Zahlen.
@@ -153,7 +153,7 @@ Nicht im Test: die Verhältnisse in den Spalten „Verhältnis der Mediane“ (a
 | `ktp_kernels.py` | Kerne, Gram-Matrizen, Merkmalsraum des Polynomkerns, Aufwandszahlen |
 | `ktp_perceptron.py` | Perceptron dual (Kerntrick) und primal, Protokoll |
 | `ktp_margin.py` | größte Trennung (duales QP mit Zertifikat), Schranke, Marge der gefundenen Trennung |
-| `ktp_scenario.py` | Erzeuger: XOR, Ringe, Liefergebiet, Monde, Etikettenoperationen, Reihenfolgen |
+| `ktp_scenario.py` | Erzeuger: XOR, Ringe, Liefergebiet, Monde, Labelsoperationen, Reihenfolgen |
 | `ktp_evaluation.py` | Analysen je Experiment, Verdikte, Tabellentexte, Formeln |
 | `ktp_presets.py` | Permalink, Schnellstart-Szenarien (aktives hervorgehoben), Zufalls-Seed-Button |
 | `ktp_constants.py` | Regler-Grenzen, Kernlisten, Szenarien |

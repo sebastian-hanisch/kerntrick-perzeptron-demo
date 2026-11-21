@@ -70,7 +70,7 @@ EXPECTED = {
     "Ringe: Innenstadt gegen Umland": ["Gauß σ = 1, Ringe mit Lücke, n = 100:** konvergiert nach"],
     "Liefergebiet ohne Lücke": ["Polynom 2, Liefergebiet (Kreis), n = 100:** konvergiert nach"],
     "Monde": ["Gauß σ = 0,5, Monde, n = 100:** konvergiert nach"],
-    "Zufallsetiketten": ["Etiketten zufällig", "Dieselbe Meldung „konvergiert“ wie bei wahren Etiketten"],
+    "Zufalls-Labels": ["Labels zufällig", "Dieselbe Meldung „konvergiert“ wie bei wahren Labels"],
     "Schmale Bandbreite (σ = 0,05)": ["σ = 0,05 (γ = 200,000):**"],
     "Breite Bandbreite (σ = 8)": ["σ = 8 (γ = 0,008):**"],
 }
