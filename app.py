@@ -285,11 +285,11 @@ with st.expander("📐 Mathematische Formulierung"):
     # erklaerseite:lesehilfe:start (erzeugt von tools/set_demo_explainer.py (Website-Repo) aus tools/content/explainers/kerntrick-perzeptron-erklaert.json, nicht von Hand ändern)
     st.markdown(
         r"""
-**Lesehilfe.** Gegeben sind Punkte $x_i \in \mathbb{R}^2$ mit Etiketten $y_i \in \{-1, +1\}$ und eine Kernfunktion $K$. Gesucht sind Zähler $\alpha_i$, mit denen $f(x) = \sum_j \alpha_j y_j \tilde K(x_j, x)$ jeden Punkt richtig einordnet. Gemessen wird die Zahl der Korrekturen und der Epochen.
+**Lesehilfe.** Gegeben sind Punkte $x_i \in \mathbb{R}^2$ mit Labels $y_i \in \{-1, +1\}$ und eine Kernfunktion $K$. Gesucht sind Zähler $\alpha_i$, mit denen $f(x) = \sum_j \alpha_j y_j \tilde K(x_j, x)$ jeden Punkt richtig einordnet. Gemessen wird die Zahl der Korrekturen und der Epochen.
 
 | Symbol | Bedeutung |
 |---|---|
-| $x_i$, $y_i$ | Punkt $i$ (zwei Koordinaten) und sein Etikett, $-1$ oder $+1$ |
+| $x_i$, $y_i$ | Punkt $i$ (zwei Koordinaten) und sein Label, $-1$ oder $+1$ |
 | $\varphi$ | Merkmalsabbildung: das „gefaltete Gelände“; wird nie ausgerechnet, nur über $K(x, x') = \langle \varphi(x), \varphi(x') \rangle$ benutzt |
 | $K$, $\tilde K$ | Kernfunktion; $\tilde K = K + 1$ legt den Bias als Zusatzkoordinate hinein |
 | $\alpha_i$ | Zahl der Korrekturen des Punktes $i$ |
