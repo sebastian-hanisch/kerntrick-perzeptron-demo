@@ -126,8 +126,8 @@ def test_dataset_bound_violation_is_a_warning():
 
 
 def test_dataset_without_bound_names_the_reason_and_without_frozen_row_says_so():
-    kind, text = ev.verdict_dataset(_dataset(bound=None, ratio=None, note="größte Trennung nicht zertifiziert (keine Zahl)", spec=("gauss", 4.0)))
-    assert "Größte Trennung nicht zertifiziert (keine Zahl)." in text and "hat 18 %" not in text
+    kind, text = ev.verdict_dataset(_dataset(bound=None, ratio=None, note="Maximum-Margin-Trennung nicht zertifiziert (keine Zahl)", spec=("gauss", 4.0)))
+    assert "Maximum-Margin-Trennung nicht zertifiziert (keine Zahl)." in text and "hat 18 %" not in text
     assert "keine eingefrorene Messzeile" in text
 
 

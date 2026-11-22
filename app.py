@@ -198,7 +198,7 @@ m1, m2, m3, m4 = st.columns(4)
 m1.metric("Korrekturen", ev.de(da.run.updates))
 m2.metric("Epochen", ev.de(da.run.epochs), delta="konvergiert" if da.run.converged else "Grenze erreicht", delta_color="off")
 m3.metric("Schranke R̃²‖w*‖²", ev.de(da.bound, 1) if da.bound is not None else "–")
-m4.metric("Marge in % der größten", ev.pct(da.ratio_free) if da.ratio_free is not None else "–", help="Maß mit freiem b: Abstand der gefundenen Trennung zu den nächsten Punkten, geteilt durch den der größten Trennung.")
+m4.metric("Marge in % der größten", ev.pct(da.ratio_free) if da.ratio_free is not None else "–", help="Maß mit freiem b: Abstand der gefundenen Trennung zu den nächsten Punkten, geteilt durch den der Maximum-Margin-Trennung.")
 st.plotly_chart(V.fig_points(da.inst.X, da.inst.y, alpha=da.run.alpha, grid=da.grid, height=440), width="stretch", key="dataset_chart")
 st.caption("Farbe: Klasse; Radius ∝ Zahl der Korrekturen des Punktes; Fläche: Vorzeichen von f; Linie: f(x) = 0. Bei „Grenze erreicht“ zeigt die Fläche den letzten Stand.")
 kind, text = ev.verdict_dataset(da)
@@ -295,7 +295,7 @@ with st.expander("📐 Mathematische Formulierung"):
 | $\alpha_i$ | Zahl der Korrekturen des Punktes $i$ |
 | $f$ | Entscheidungsfunktion $f(x) = \sum_j \alpha_j y_j \tilde K(x_j, x)$; das Vorzeichen gibt die Klasse |
 | $\sigma$ | Bandbreite des Gauß-Kerns: Längenmaß in den Einheiten der Daten |
-| $\tilde R^2$, $\lVert w^* \rVert$ | $\tilde R^2 = \max_i \tilde K(x_i, x_i)$ und Norm der größten Trennung; die Schranke für die Korrekturen ist $\tilde R^2 \lVert w^* \rVert^2$ |
+| $\tilde R^2$, $\lVert w^* \rVert$ | $\tilde R^2 = \max_i \tilde K(x_i, x_i)$ und Norm der Maximum-Margin-Trennung; die Schranke für die Korrekturen ist $\tilde R^2 \lVert w^* \rVert^2$ |
 
 [Schritt für Schritt erklärt, mit Herleitung und Literatur](https://sebastianhanisch.net/kerntrick-perzeptron-erklaert.html#fachleute)
         """

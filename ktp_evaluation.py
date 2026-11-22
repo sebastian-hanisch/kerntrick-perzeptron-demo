@@ -255,7 +255,7 @@ def analyse_dataset(daten: str, kern_label: str, n: int, mischen: bool, seed: in
         if qp_t.certified:
             bound = M.novikoff_bound(Kt, qp_t)
         else:
-            note = "größte Trennung nicht zertifiziert (keine Zahl)"
+            note = "Maximum-Margin-Trennung nicht zertifiziert (keine Zahl)"
         if qp_t.certified or qp_f.certified:
             rf, rt = M.found_margin_ratio(Kt, K, inst.y, run.alpha, qp_f, qp_t)
     return DatasetAnalysis(inst, spec, run, K, Kt, grid, P.error_rate(run.s, inst.y), int((run.alpha > 0).sum()), qp_t, qp_f, bound, rf, rt, note, DATEN_NOISE[daten])
@@ -388,7 +388,7 @@ def verdict_xor(a: XorAnalysis) -> tuple[str, str]:
     if a.formula is not None:
         text += f" Die Trennfunktion ist f(x) = {a.formula}."
     if a.qp is not None and a.bound is not None:
-        text += f" Größte Trennung in (φ, 1): Marge 2/‖w*‖ = {de(a.qp.margin, 3)}, Schranke R̃²‖w*‖² = {de(a.bound, 2)} ≥ {de(a.run.updates)} Korrekturen."
+        text += f" Maximum-Margin-Trennung in (φ, 1): Marge 2/‖w*‖ = {de(a.qp.margin, 3)}, Schranke R̃²‖w*‖² = {de(a.bound, 2)} ≥ {de(a.run.updates)} Korrekturen."
     if a.spec[0] == "gauss":
         u = float(np.exp(-2.0 / a.spec[1] ** 2))
         text += f" Geschlossene Form der Marge auf XOR: 1 − exp(−2/σ²) = {de(1.0 - u, 6)}."
@@ -443,7 +443,7 @@ def verdict_dataset(a: DatasetAnalysis) -> tuple[str, str]:
                 text += f" Schranke R̃²‖w*‖² = {de(a.bound, 1)} ≥ {de(r.updates)} Korrekturen (Rechnung dieser Seite, diese Instanz)."
             else:
                 kind = "warning"
-                text += f" Die Schranke R̃²‖w*‖² = {de(a.bound, 1)} wird überschritten: das widerspräche dem Satz, das Zertifikat der größten Trennung ist zu prüfen."
+                text += f" Die Schranke R̃²‖w*‖² = {de(a.bound, 1)} wird überschritten: das widerspräche dem Satz, das Zertifikat der Maximum-Margin-Trennung ist zu prüfen."
         elif a.qp_note:
             text += f" {a.qp_note[0].upper()}{a.qp_note[1:]}."
         if a.ratio_free is not None:
@@ -598,7 +598,7 @@ def limits_markdown() -> str:
         "**Annahmen.** Alle Punkte sind ausgedacht (Modelle, keine Messdaten). Der Bias steht als Zusatzkoordinate: K̃ = K + 1. Start bei w = 0, deshalb ist die Lernrate ohne Wirkung. "
         "Feste Reihenfolge der Punkte je Zufalls-Seed. „Konvergiert“ heißt: eine Epoche ohne Korrektur; der Fall y f = 0 zählt als Fehler. „Marge“ heißt 2/‖w‖ (Breite zwischen den Klassen; "
         "viele Lehrtexte nennen 1/‖w‖ Marge, das ist hier der Abstand zur Ebene). Die Schranke R̃²‖w*‖² ist eine Rechnung dieser Seite, keine Quellenaussage.\n\n"
-        "**Grenzen.** Nur zweidimensionale Beispiele; größere n und höhere Dimension sind nicht gemessen. Es gibt keinen Regler C, λ oder ν und keinen Vergleich mit einem abgestimmten Verfahren, "
+        "**Grenzen.** Nur zweidimensionale Beispiele; größere n und höhere Dimension sind nicht gemessen. Es gibt keinen Regler für die Hyperparameter C, λ oder ν und keinen Vergleich mit einem abgestimmten Verfahren, "
         "deshalb keine Aussage „Auswendiglernen schadet“. Die Bandbreite ist nur an den Ringen gemessen. Der Kern wird nicht auf Zulässigkeit geprüft (nur der kleinste Eigenwert wird gezeigt). "
         "Mischen der Reihenfolge je Epoche ist als Schalter angeboten, aber nicht gemessen. Ein Nutzen von Kernmethoden in Logistik, Lager oder Fertigung ist nicht belegt.\n\n"
         "**Bekannte Probleme und Unsicherheiten.** Live-Modell und Studie sind verschieden: die eingefrorenen Tabellen fassen 20 bis 60 Zufalls-Seeds zusammen, die Seite rechnet eine Instanz; "
@@ -622,7 +622,7 @@ MATH_SYMBOLE = """
 | $w$ | Normale im Merkmalsraum, $w = \\sum_j \\alpha_j y_j \\tilde\\varphi(x_j)$ mit $\\tilde\\varphi = (\\varphi, 1)$ |
 | $f$ | Entscheidungsfunktion $f(x) = \\sum_j \\alpha_j y_j \\tilde K(x_j, x)$ |
 | $\\tilde R$ | $\\tilde R^2 = \\max_i \\tilde K(x_i, x_i)$ |
-| $\\lVert w^* \\rVert$ | Norm der größten Trennung in $(\\varphi, 1)$; Marge $= 2 / \\lVert w^* \\rVert$ (Abstand zur Ebene $1 / \\lVert w^* \\rVert$) |
+| $\\lVert w^* \\rVert$ | Norm der Maximum-Margin-Trennung in $(\\varphi, 1)$; Marge $= 2 / \\lVert w^* \\rVert$ (Abstand zur Ebene $1 / \\lVert w^* \\rVert$) |
 | $\\sigma$ | Bandbreite des Gauß-Kerns, Längenmaß in den Einheiten der Daten; $\\gamma = 1 / (2\\sigma^2)$ |
 | $D$, $p$, $d$ | Zahl der Merkmale, Eingabedimension, Grad des Polynomkerns; $D = \\binom{p + d}{d}$ |
 """
@@ -640,7 +640,7 @@ MATH_EQUATIONS = [
 MATH_AFTER = (
     "Der **Kerntrick** ist die Ersetzung von $\\langle \\tilde\\varphi(x), \\tilde\\varphi(x') \\rangle$ durch $\\tilde K(x, x')$; die Regel selbst bleibt gleich (duale Form: $\\alpha_i$ zählt, wie oft Punkt $i$ korrigiert wurde). "
     "Der Polynomkern hat $D = \\binom{p+d}{d}$ Merkmale (Multinomialsatz, die Summe oben); eine Kernauswertung kostet $p + d - 1$ Multiplikationen. "
-    "**Größte Trennung und Schranke** (Rechnung dieser Seite; die Schranke ist hier eine Rechnung, keine Quellenaussage): $w^*$ löse $\\min \\tfrac12 \\lVert w \\rVert^2$ unter $y_i \\langle w, \\tilde\\varphi(x_i) \\rangle \\ge 1$; "
+    "**Maximum-Margin-Trennung und Schranke** (Rechnung dieser Seite; die Schranke ist hier eine Rechnung, keine Quellenaussage): $w^*$ löse $\\min \\tfrac12 \\lVert w \\rVert^2$ unter $y_i \\langle w, \\tilde\\varphi(x_i) \\rangle \\ge 1$; "
     "das duale Problem mit $Q_{ij} = y_i y_j \\tilde K(x_i, x_j)$ ist"
 )
 MATH_BOUND_EQUATIONS = [

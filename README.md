@@ -33,14 +33,14 @@ Punkte x_i ∈ ℝ², Labels y_i ∈ {−1, +1}. **Regel:** wenn y_i f(x_i) ≤ 
 Start α = 0, deshalb hat eine Lernrate keine Wirkung auf die Entscheidungen. **Epoche** = ein Durchlauf in fester Reihenfolge (je Zufalls-Seed eine feste Zufallsfolge; Mischen in jeder Epoche ist ein Schalter, nicht gemessen);
 **konvergiert** = eine Epoche ohne Korrektur; „Grenze erreicht“ heißt nicht „nicht trennbar“. **Der Kerntrick besteht darin, das Skalarprodukt überall durch K̃ zu ersetzen und sonst nichts zu ändern.**
 Kerne: linear, Polynom (x·y + 1)^d mit d = 2, 3, Gauß exp(−‖x − y‖²/(2σ²)) mit der Bandbreite σ (γ = 1/(2σ²)), Sigmoid tanh(a x·y + c) nur als Falle.
-**Marge heißt 2/‖w‖** (Breite zwischen den Klassen; viele Lehrtexte nennen 1/‖w‖ Marge, das ist hier der Abstand zur Ebene). Die **Schranke** k ≤ R̃²‖w*‖² (R̃² = max K̃(x, x), w* die größte Trennung in (φ, 1), also mit dem Bias als Koordinate)
+**Marge heißt 2/‖w‖** (Breite zwischen den Klassen; viele Lehrtexte nennen 1/‖w‖ Marge, das ist hier der Abstand zur Ebene). Die **Schranke** k ≤ R̃²‖w*‖² (R̃² = max K̃(x, x), w* die Maximum-Margin-Trennung in (φ, 1), also mit dem Bias als Koordinate)
 ist eine Rechnung dieser Seite, keine Quellenaussage (die Beweisschritte stehen im 📐-Expander und sind in `tests/test_handbeispiele.py` nachgerechnet). „Marge in (φ, 1)“ ist nicht die Marge mit freiem Versatz b;
 beide sind bei XOR gleich (Σαy = 0); beim Gauß-Kern liegen die gefundenen Margen-Verhältnisse beider Maße nah beieinander (Ringe, σ = 1: Median 0,167 gegen 0,165 und 0,194 gegen 0,192), beim Polynom 2 nicht (0,185 bis 0,191 gegen 0,254 bis 0,262). Experiment 3 zeigt das Maß mit freiem b. Die Formeln stehen im Expander „📐 Mathematische Formulierung“.
 
 ## Methodik
 
 - **Duale Form** mit mitgeführtem Vektor s = K̃(α ∘ y): eine Prüfung kostet O(1), eine Korrektur O(n) (`ktp_perceptron.py`); eine schnelle und eine Punkt-für-Punkt-Fassung liefern dieselben Läufe (Test).
-- **Größte Trennung** (`ktp_margin.py`): ein kleines duales QP mit Aktivmengenverfahren (nur NumPy) und Zertifikat (Dualitätslücke ≤ 10⁻⁶·max(1, ‖w*‖²), kleinste Randbedingung ≥ 1 − 10⁻⁴); ohne Zertifikat steht keine Zahl.
+- **Maximum-Margin-Trennung** (`ktp_margin.py`): ein kleines duales QP mit Aktivmengenverfahren (nur NumPy) und Zertifikat (Dualitätslücke ≤ 10⁻⁶·max(1, ‖w*‖²), kleinste Randbedingung ≥ 1 − 10⁻⁴); ohne Zertifikat steht keine Zahl.
   Orakel: Aufzählung aller Stützmengen, `SVC` und nichtnegative kleinste Quadrate (nur in Tests).
 - **Erzeuger** (`ktp_scenario.py`): XOR (vier Punkte), Ringe mit Lücke (Radius 1 und 2, Breite ±0,1; Lücke 0,8 im Radius), Liefergebiet (Kreis; Kunden gleichverteilt in [−1, 1]², Klasse +1 im Kreis mit halber Fläche), Monde (zwei Halbkreisbögen, beschränktes gleichverteiltes Rauschen).
   Zufallsquelle überall SplitMix64 (`ktp_rng.py`, Kopie der Vorlage mit Kopier-Test); kein `numpy.random`.
@@ -121,7 +121,7 @@ Nicht im Test: die Verhältnisse in den Spalten „Verhältnis der Mediane“ (a
 ## Ehrliche Grenzen
 
 - Nur zweidimensionale, ausgedachte Beispiele. Größere n, höhere Dimension, Bandbreite im Liefergebiet und in den Monden sind nicht gemessen; die Bandbreitenkurve gilt für die Ringe.
-- Kein Regler C, λ oder ν und kein Vergleich mit einem abgestimmten Verfahren: deshalb keine Aussage „Auswendiglernen schadet“. Die Zahl „Perceptron gegen größte Marge“ eines anderen Erzeugers (linear, zwei Gebiete mit Puffer) führt die Nachfolgerin der Reihe;
+- Kein Regler für die Hyperparameter C, λ oder ν und kein Vergleich mit einem abgestimmten Verfahren: deshalb keine Aussage „Auswendiglernen schadet“. Die Zahl „Perceptron gegen größte Marge“ eines anderen Erzeugers (linear, zwei Gebiete mit Puffer) führt die Nachfolgerin der Reihe;
   die Ringe mit Lücke hier haben ihre eigene Zeile, und beide Zahlen dürfen nicht als Widerspruch gelesen werden.
 - Gilt nur für die gemessene Regel: feste Reihenfolge je Zufalls-Seed, Bias als K + 1, Epochengrenze wie genannt (Messgrenze 50 000 gegen den Regler 3 000), Zähleinheiten Korrekturen, Zufalls-Seeds und Multiplikationen. Mischen je Epoche ist als Schalter angeboten, nicht gemessen.
 - Das Live-Modell ist nicht die Studie: die Seite rechnet eine Instanz, die eingefrorenen Tabellen fassen 20 bis 60 Zufalls-Seeds zusammen. Ein einzelner Zufalls-Seed ist kein Befund.
@@ -133,7 +133,7 @@ Nicht im Test: die Verhältnisse in den Spalten „Verhältnis der Mediane“ (a
 ## Verifikation
 
 - **Kern:** das Perceptron gegen Handrechnung (zwei Punkte, XOR), schnelle gegen Punkt-für-Punkt-Fassung, Eigenschaften (Spiegeln der Labels, Umnummerieren, Drehen, Skalieren der Gram-Matrix, Lernrate), Randfälle (`tests/test_perceptron.py`, `tests/test_edge_cases.py`).
-- **Orakel** (`tests/test_oracle_kerntrick.py`): dual gegen primal im Tensorraum gegen `sklearn.linear_model.Perceptron`; Kern gegen Merkmalsraum; größte Trennung gegen Aufzählung aller Stützmengen, `SVC` und nichtnegative kleinste Quadrate; Gauß-Marge auf XOR gegen die geschlossene Form;
+- **Orakel** (`tests/test_oracle_kerntrick.py`): dual gegen primal im Tensorraum gegen `sklearn.linear_model.Perceptron`; Kern gegen Merkmalsraum; Maximum-Margin-Trennung gegen Aufzählung aller Stützmengen, `SVC` und nichtnegative kleinste Quadrate; Gauß-Marge auf XOR gegen die geschlossene Form;
   kleinster Eigenwert gegen `numpy.linalg.eigvalsh`; Literaturwert Cortes/Vapnik 1995 (Polynomkern, Grad-2-Merkmal).
 - **Handbeispiele** (`tests/test_handbeispiele.py`, `tests/handbeispiel_exakt.py`): 304 Prüfungen in exakten Brüchen, dann die App gegen dieselben Zahlen.
 - **Zufall:** Kopier-Test von `ktp_rng.py`, eingefrorene Werte je Erzeuger, Eigenschaften der Erzeuger (`tests/test_rng_copy.py`, `tests/test_scenario.py`).
@@ -152,7 +152,7 @@ Nicht im Test: die Verhältnisse in den Spalten „Verhältnis der Mediane“ (a
 | `ktp_rng.py` | SplitMix64 (Kopie der Vorlage, Kopier-Test) |
 | `ktp_kernels.py` | Kerne, Gram-Matrizen, Merkmalsraum des Polynomkerns, Aufwandszahlen |
 | `ktp_perceptron.py` | Perceptron dual (Kerntrick) und primal, Protokoll |
-| `ktp_margin.py` | größte Trennung (duales QP mit Zertifikat), Schranke, Marge der gefundenen Trennung |
+| `ktp_margin.py` | Maximum-Margin-Trennung (duales QP mit Zertifikat), Schranke, Marge der gefundenen Trennung |
 | `ktp_scenario.py` | Erzeuger: XOR, Ringe, Liefergebiet, Monde, Labelsoperationen, Reihenfolgen |
 | `ktp_evaluation.py` | Analysen je Experiment, Verdikte, Tabellentexte, Formeln |
 | `ktp_presets.py` | Permalink, Schnellstart-Szenarien (aktives hervorgehoben), Zufalls-Seed-Button |
@@ -168,7 +168,7 @@ Nicht im Test: die Verhältnisse in den Spalten „Verhältnis der Mediane“ (a
 
 ## Bewusst nicht umgesetzt
 
-Nicht angeboten und nicht gemessen; nirgends ein Regler und kein Versprechen: C, λ und ν; ein Vergleich mit abgestimmtem C; Bandbreite im Liefergebiet und in den Monden, größere n und höhere Dimension; Mischen je Epoche als Messreihe;
+Nicht angeboten und nicht gemessen; nirgends ein Regler und kein Versprechen: für die Hyperparameter C, λ und ν; ein Vergleich mit abgestimmtem C; Bandbreite im Liefergebiet und in den Monden, größere n und höhere Dimension; Mischen je Epoche als Messreihe;
 die Prüfung und Reparatur unzulässiger Kerne; die Näherung der Gram-Matrix; TabPFN (nur Quelle); Gastbeiträge (Kernel-PCA, Kernel-k-Means, MMD, HSIC, Graphkerne); ein PDF-Export; ein Nutzen im Betrieb.
 
 ## Lokal ausführen
